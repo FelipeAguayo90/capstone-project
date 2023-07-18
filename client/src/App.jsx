@@ -1,3 +1,21 @@
+// import { BrowserRouter, Routes, Route } from 'react-router-dom';
+// import { Home, Courses, Admin, Login, Register, UserProfile } from './pages';
+// function App() {
+//   return (
+//     <BrowserRouter>
+//       <Routes>
+//         <Route path="/" element={<Home />} />
+//         <Route path="/courses" element={<Courses />} />
+//         <Route path="/admin" element={<Admin />} />
+//         <Route path="/login" element={<Login />} />
+//         <Route path="/register" element={<Register />} />
+//         <Route path="/user" element={<UserProfile />} />
+//       </Routes>
+//     </BrowserRouter>
+//   );
+// }
+// export default App;
+
 // client/src/App.jsx
 
 import { useState, useEffect } from 'react';

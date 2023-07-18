@@ -1,4 +1,4 @@
-const admin = () => {
-  return <div>admin</div>;
-};
-export default admin;
+function Admin() {
+  return <div>Admin</div>;
+}
+export default Admin;

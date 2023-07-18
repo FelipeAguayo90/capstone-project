@@ -1,3 +1,15 @@
 {"level":"warn","message":"red"}
 {"level":"info","message":"hello color"}
 {"level":"http","message":"::ffff:127.0.0.1 - - [14/Jul/2023:15:51:02 +0000] \"POST /add HTTP/1.1\" 200 4"}
+{"level":"http","message":"::ffff:127.0.0.1 - - [18/Jul/2023:14:18:02 +0000] \"GET /api HTTP/1.1\" 200 32"}
+{"level":"http","message":"::ffff:127.0.0.1 - - [18/Jul/2023:14:18:02 +0000] \"GET /api HTTP/1.1\" 304 -"}
+{"level":"http","message":"::ffff:127.0.0.1 - - [18/Jul/2023:14:18:11 +0000] \"GET /api HTTP/1.1\" 304 -"}
+{"level":"http","message":"::ffff:127.0.0.1 - - [18/Jul/2023:14:18:11 +0000] \"GET /api HTTP/1.1\" 304 -"}
+{"level":"http","message":"::ffff:127.0.0.1 - - [18/Jul/2023:14:18:31 +0000] \"GET /api HTTP/1.1\" 304 -"}
+{"level":"http","message":"::ffff:127.0.0.1 - - [18/Jul/2023:14:18:31 +0000] \"GET /api HTTP/1.1\" 304 -"}
+{"level":"http","message":"::ffff:127.0.0.1 - - [18/Jul/2023:14:50:08 +0000] \"GET /api HTTP/1.1\" 200 32"}
+{"level":"http","message":"::ffff:127.0.0.1 - - [18/Jul/2023:14:50:08 +0000] \"GET /api HTTP/1.1\" 304 -"}
+{"level":"http","message":"::ffff:127.0.0.1 - - [18/Jul/2023:14:50:13 +0000] \"GET /api HTTP/1.1\" 304 -"}
+{"level":"http","message":"::ffff:127.0.0.1 - - [18/Jul/2023:14:50:13 +0000] \"GET /api HTTP/1.1\" 304 -"}
+{"level":"http","message":"::ffff:127.0.0.1 - - [18/Jul/2023:14:50:19 +0000] \"GET /api HTTP/1.1\" 304 -"}
+{"level":"http","message":"::ffff:127.0.0.1 - - [18/Jul/2023:14:50:19 +0000] \"GET /api HTTP/1.1\" 304 -"}
