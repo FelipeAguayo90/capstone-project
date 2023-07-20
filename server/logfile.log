@@ -13,3 +13,4 @@
 {"level":"http","message":"::ffff:127.0.0.1 - - [18/Jul/2023:14:50:13 +0000] \"GET /api HTTP/1.1\" 304 -"}
 {"level":"http","message":"::ffff:127.0.0.1 - - [18/Jul/2023:14:50:19 +0000] \"GET /api HTTP/1.1\" 304 -"}
 {"level":"http","message":"::ffff:127.0.0.1 - - [18/Jul/2023:14:50:19 +0000] \"GET /api HTTP/1.1\" 304 -"}
+{"level":"http","message":"::ffff:127.0.0.1 - - [18/Jul/2023:15:28:20 +0000] \"GET / HTTP/1.1\" 200 951"}
