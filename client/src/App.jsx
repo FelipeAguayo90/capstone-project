@@ -1,26 +1,54 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import {
+  HomeLayout,
   Home,
-  Courses,
   Admin,
   Login,
+  Courses,
   Register,
-  UserProfile,
   Error,
-  HomeLayout,
+  UserDashboard,
+  AdminLayout,
+  ProtectedAdminRoute,
+  ProtectedStntRoute,
+  StudentLayout,
+  Student,
 } from './pages';
+import { useState } from 'react';
+
 function App() {
+  const [user, setuser] = useState(false);
+
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomeLayout />}>
           <Route index element={<Home />} />
-          <Route path="/courses" element={<Courses />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/user" element={<UserProfile />} />
-          <Route path="/*" element={<Error />} />
+          <Route path="courses" element={<Courses />} />
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
+          <Route
+            path="admin"
+            element={
+              <ProtectedAdminRoute user={user}>
+                <AdminLayout />
+              </ProtectedAdminRoute>
+            }
+          >
+            <Route index element={<Admin />} />
+          </Route>
+          <Route
+            path="/student"
+            element={
+              <ProtectedStntRoute user={user}>
+                <StudentLayout />
+              </ProtectedStntRoute>
+            }
+          >
+            <Route index element={<Student />} />
+            <Route path="/student/dashboard" element={<UserDashboard />} />
+          </Route>
+          <Route path="*" element={<Error />} />
         </Route>
       </Routes>
     </BrowserRouter>

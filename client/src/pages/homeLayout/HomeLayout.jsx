@@ -1,7 +1,7 @@
+import { Navbar } from '../../components/navbar';
 import { Outlet } from 'react-router-dom';
-import { Navbar } from '../components/navbar';
 
-function Home() {
+const HomeLayout = () => {
   return (
     <>
       <Navbar />
@@ -9,5 +9,5 @@ function Home() {
       <Outlet />
     </>
   );
-}
-export default Home;
+};
+export default HomeLayout;
