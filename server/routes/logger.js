@@ -13,7 +13,7 @@ const logger = winston.createLogger({
 });
 // Morgan for HTTP request logging
 router.use(
-  morgan('common', {
+  morgan('tiny', {
     stream: {
       write: (message) => {
         logger.http(message.trim());
