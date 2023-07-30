@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken');
 
 const login = asyncWrapper(async (req, res) => {
   const { username, password } = req.body;
+  console.log(req.body);
 
   const values = [username];
   const text = 'SELECT * FROM account WHERE username = $1';
@@ -26,7 +27,17 @@ const login = asyncWrapper(async (req, res) => {
       algorithm: 'HS256',
       expiresIn: '1d',
     });
-    res.status(200).json({ msg: 'Logged in successfully', token });
+    const { email, first_name, is_admin, last_login, user_id } =
+      results.rows[0];
+    res.status(200).json({
+      msg: 'Logged in successfully',
+      token: `Bearer ${token}`,
+      first_name,
+      is_admin,
+      last_login,
+      user_id,
+      email,
+    });
   });
 });
 

@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import {
   HomeLayout,
   Home,
@@ -14,11 +15,12 @@ import {
   StudentLayout,
   Student,
 } from './pages';
-import { useState } from 'react';
+// import { useState } from 'react';
 
 function App() {
-  const [user, setuser] = useState(false);
-
+  // const [user, setuser] = useState(false);
+  const { user } = useSelector((store) => store.user);
+  console.log(user);
   return (
     <BrowserRouter>
       <Routes>
@@ -30,7 +32,7 @@ function App() {
           <Route
             path="admin"
             element={
-              <ProtectedAdminRoute user={user}>
+              <ProtectedAdminRoute>
                 <AdminLayout />
               </ProtectedAdminRoute>
             }
@@ -40,7 +42,7 @@ function App() {
           <Route
             path="/student"
             element={
-              <ProtectedStntRoute user={user}>
+              <ProtectedStntRoute>
                 <StudentLayout />
               </ProtectedStntRoute>
             }

@@ -1,0 +1,68 @@
+.nav-container {
+  background-color: $primary-color;
+  height: 70px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 0 0 3px 3px;
+
+  svg {
+    height: 2em;
+    width: 2em;
+  }
+
+  // div {
+  //   height: 70px;
+  //   align-self: center;
+  // }
+  // a {
+  //   display: none;
+  //   text-decoration: none;
+  // }
+}
+
+.nav-container.show {
+  height: fit-content;
+  // align-items: c;
+}
+
+.menu-icon {
+  cursor: pointer;
+}
+
+.nav-links {
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links.show {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.nav-links li {
+  padding: 8px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+}
+
+.drop-down {
+  width: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.drop-down.show {
+  align-self: flex-start;
+}
+/* You can add more styles as needed */

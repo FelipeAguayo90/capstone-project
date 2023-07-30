@@ -1,0 +1,21 @@
+@import './resets';
+@import './typography';
+@import './variables';
+@import './index';
+
+body {
+  //   display: flex;
+  //   flex-direction: column;
+  background-color: $tertiary-color;
+  height: 100vh;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.active {
+  color: $active-text;
+}
