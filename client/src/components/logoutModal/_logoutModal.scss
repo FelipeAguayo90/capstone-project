@@ -1,0 +1,46 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background-color: white;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+  h4 {
+    padding: 10px;
+  }
+
+  button {
+    width: 100px;
+    padding: 5px 10px;
+  }
+  div {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+.close-button {
+  background-color: $danger-color;
+  border-radius: $border-radius;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+.open-button {
+  background-color: $success-color;
+  border-radius: $border-radius;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}

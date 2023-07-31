@@ -216,3 +216,10 @@
 {"level":"http","message":"POST /api/v1/login 200 303 - 125.606 ms"}
 {"level":"http","message":"POST /api/v1/login 200 303 - 131.816 ms"}
 {"level":"http","message":"POST /api/v1/login 200 301 - 129.149 ms"}
+{"level":"http","message":"POST /api/v1/login 200 303 - 143.242 ms"}
+{"level":"http","message":"POST /api/v1/login 200 303 - 132.374 ms"}
+{"level":"http","message":"POST /api/v1/login 200 301 - 129.505 ms"}
+{"level":"http","message":"POST /api/v1/login 200 303 - 126.621 ms"}
+{"level":"http","message":"POST /api/v1/login 200 303 - 109.522 ms"}
+{"level":"http","message":"POST /api/v1/login 200 303 - 127.773 ms"}
+{"level":"http","message":"POST /api/v1/login 200 303 - 130.498 ms"}

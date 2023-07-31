@@ -2,8 +2,15 @@ import { NavLink } from 'react-router-dom';
 import { HiBars4 } from 'react-icons/hi2';
 import { RxAvatar } from 'react-icons/rx';
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { openModal } from '../../features/logoutModal/logoutModalSlice';
 
 const Navbar = () => {
+  const { user } = useSelector((store) => store.user);
+  // const { isOpen } = useSelector((store) => store.logoutModal);
+  const dispatch = useDispatch();
+
+  console.log(user.username);
   const [isMenuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -16,7 +23,7 @@ const Navbar = () => {
         <p>MTEC</p>
       </div>
       <div>
-        {/* <h3>{user ? user : null}</h3> */}
+        {`${user.first_name ? user.first_name : ''}`}
         <RxAvatar />
       </div>
 
@@ -32,6 +39,17 @@ const Navbar = () => {
           <li>
             <NavLink to="/login">Login</NavLink>
           </li>
+          {user.first_name ? (
+            <li
+              onClick={() => {
+                dispatch(openModal());
+              }}
+            >
+              Logout
+            </li>
+          ) : (
+            <></>
+          )}
         </ul>
       </div>
     </nav>
