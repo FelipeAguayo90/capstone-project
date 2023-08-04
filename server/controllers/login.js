@@ -37,6 +37,7 @@ const login = asyncWrapper(async (req, res) => {
       last_login,
       user_id,
       email,
+      user: true,
     });
   });
 });

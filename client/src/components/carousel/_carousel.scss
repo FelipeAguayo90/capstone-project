@@ -1,0 +1,18 @@
+.carousel-container {
+  // margin-top: 5.5rem;
+  @include flexCenter(center, column, center);
+  height: fit-content;
+  width: 393px;
+
+  h3 {
+    text-align: center;
+    margin-bottom: 1em;
+  }
+}
+
+// @mixin flexCenter($align, $direction, $justify) {
+//   display: flex;
+//   justify-content: $justify;
+//   align-items: $align;
+//   flex-direction: $direction;
+// }

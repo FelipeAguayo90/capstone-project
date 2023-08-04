@@ -1,58 +1,98 @@
 import { NavLink } from 'react-router-dom';
 import { HiBars4 } from 'react-icons/hi2';
 import { RxAvatar } from 'react-icons/rx';
-import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { openModal } from '../../features/logoutModal/logoutModalSlice';
+import {
+  openMenu,
+  closeMenu,
+  toggleMenu,
+} from '../../features/navbar/navbarSlice';
 
 const Navbar = () => {
   const { user } = useSelector((store) => store.user);
-  // const { isOpen } = useSelector((store) => store.logoutModal);
+  const { isMenuOpen } = useSelector((store) => store.navbar);
   const dispatch = useDispatch();
 
-  console.log(user.username);
-  const [isMenuOpen, setMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setMenuOpen((prev) => !prev);
-  };
-
   return (
-    <nav className={`nav-container ${isMenuOpen ? 'show' : ''}`}>
-      <div>
-        <p>MTEC</p>
-      </div>
-      <div>
-        {`${user.first_name ? user.first_name : ''}`}
-        <RxAvatar />
-      </div>
+    <header className="header-fixed">
+      <nav className={`nav-container ${isMenuOpen ? 'show' : ''}`}>
+        <div className="navbar">
+          <div>
+            <p>MTEC</p>
+          </div>
+          <div>
+            {user.user ? (
+              <h4>{user.first_name}</h4>
+            ) : (
+              <NavLink to="/register">enroll today</NavLink>
+            )}
 
-      <div className={`drop-down ${isMenuOpen ? 'show' : ''}`}>
-        <HiBars4 className="h-20 w-20 menu-icon" onClick={toggleMenu} />
-        <ul className={`nav-links ${isMenuOpen ? 'show' : ''} `}>
-          <li>
-            <NavLink to="/">Home</NavLink>
-          </li>
-          <li>
-            <NavLink to="/courses">Courses</NavLink>
-          </li>
-          <li>
-            <NavLink to="/login">Login</NavLink>
-          </li>
-          {user.first_name ? (
-            <li
+            <HiBars4
+              className="h-20 w-20 menu-icon"
               onClick={() => {
-                dispatch(openModal());
+                dispatch(toggleMenu(isMenuOpen));
               }}
-            >
-              Logout
+            />
+          </div>
+        </div>
+
+        <div className={`drop-down ${isMenuOpen ? 'show' : ''}`}>
+          <ul className={`nav-links ${isMenuOpen ? 'show' : ''} `}>
+            <li>
+              <RxAvatar />
             </li>
-          ) : (
-            <></>
-          )}
-        </ul>
-      </div>
-    </nav>
+            <li>
+              <NavLink
+                to="/"
+                onClick={() => {
+                  dispatch(toggleMenu(isMenuOpen));
+                }}
+              >
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/courses"
+                onClick={() => {
+                  dispatch(toggleMenu(isMenuOpen));
+                }}
+              >
+                Courses
+              </NavLink>
+            </li>
+
+            {!user.user ? (
+              <li>
+                <NavLink
+                  to="/login"
+                  onClick={() => {
+                    dispatch(toggleMenu(isMenuOpen));
+                  }}
+                >
+                  Login
+                </NavLink>
+              </li>
+            ) : (
+              <li
+                onClick={() => {
+                  dispatch(openModal());
+                }}
+              >
+                <NavLink
+                  onClick={() => {
+                    dispatch(toggleMenu(isMenuOpen));
+                  }}
+                >
+                  Logout
+                </NavLink>
+              </li>
+            )}
+          </ul>
+        </div>
+      </nav>
+    </header>
   );
 };
 export default Navbar;

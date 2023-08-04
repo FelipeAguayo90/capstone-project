@@ -15,7 +15,7 @@ const register = asyncWrapper(async (req, res) => {
     email,
     isAdmin,
   ];
-  const text = `INSERT INTO account(username, first_name, last_name, passhash, email,created_on, is_admin) VALUES ($1, $2, $3, $4 , $5, CURRENT_TIMESTAMP, $6)`;
+  const text = `INSERT INTO account(username, first_name, last_name, passhash, email, created_on, is_admin) VALUES ($1, $2, $3, $4 , $5, CURRENT_TIMESTAMP, $6) returning *`;
   pool.query(text, values, (error, results) => {
     if (error) {
       return res.status(500).json({ msg: error });

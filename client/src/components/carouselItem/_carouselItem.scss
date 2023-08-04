@@ -1,0 +1,30 @@
+.carousel-item {
+  width: 393px;
+  padding: 0.8em;
+  position: relative;
+  //   overflow: hidden;
+
+  .img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 550px;
+    // width: 393px;
+    overflow: hidden;
+  }
+
+  h5 {
+    position: absolute;
+    top: 50%;
+    // left: 68px;
+    // width: 100%;
+    width: calc(100% - 0.8em);
+
+    text-align: center;
+  }
+
+  img {
+    width: 550px;
+    opacity: 50%;
+  }
+}

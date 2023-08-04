@@ -1,4 +1,7 @@
-.test-scss {
+.home-container {
+  margin-top: 5.5rem;
+  @include flexCenter(center, column, start);
+  height: 100%;
   font-family: 'Roboto', sans-serif;
   font-weight: medium;
   font-size: larger;

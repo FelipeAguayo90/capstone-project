@@ -1,0 +1,35 @@
+.tab-container {
+  display: flex;
+  height: 50px;
+  align-items: center;
+  background-color: $light-blue;
+}
+
+.tab {
+  background-color: $lightest-blue;
+  border-bottom: 1px solid $black-color;
+  height: 100%;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+
+  a {
+    text-decoration: none;
+    color: #333;
+  }
+}
+
+.active-div {
+  background-color: $tertiary-color;
+  border-bottom: none;
+}
+// .nav-links a {
+//   text-decoration: none;
+// }
+
+.tab:hover {
+  background-color: $tertiary-color;
+  border-bottom: none;
+}

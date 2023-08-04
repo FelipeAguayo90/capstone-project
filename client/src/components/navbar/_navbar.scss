@@ -1,31 +1,49 @@
+.header-fixed {
+  position: relative;
+  z-index: 3;
+  height: fit-content;
+}
+
 .nav-container {
+  display: flex;
+  flex-direction: column;
   background-color: $primary-color;
   height: 70px;
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 10px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 0 0 3px 3px;
+  position: fixed;
 
   svg {
     height: 2em;
     width: 2em;
   }
 
-  // div {
-  //   height: 70px;
-  //   align-self: center;
-  // }
-  // a {
-  //   display: none;
-  //   text-decoration: none;
-  // }
+  .navbar {
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    div:nth-child(2) {
+      width: 9rem;
+    }
+  }
+
+  div {
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  li:nth-child(1) {
+    padding: 0 5px;
+  }
 }
 
 .nav-container.show {
   height: fit-content;
+  padding-top: 0;
   // align-items: c;
 }
 
@@ -47,7 +65,7 @@
 }
 
 .nav-links li {
-  padding: 8px;
+  padding: 10px;
 }
 
 .nav-links a {
@@ -56,13 +74,14 @@
 }
 
 .drop-down {
-  width: 70px;
+  // width: 70px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
 }
 
 .drop-down.show {
-  align-self: flex-start;
+  display: flex;
+  align-items: end;
 }
 /* You can add more styles as needed */

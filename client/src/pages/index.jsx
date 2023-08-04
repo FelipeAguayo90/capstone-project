@@ -5,12 +5,14 @@ import { Login } from './login';
 import { Register } from './register';
 import { Courses } from './courses';
 import { Error } from './error';
-import { UserDashboard } from './userDashboard';
+import { Dashboard } from './Dashboard/';
 import { AdminLayout } from './adminLayout';
 import { ProtectedAdminRoute } from './protectedAdminRoute';
 import { ProtectedStntRoute } from './protectedStntRoute';
 import { StudentLayout } from './studentLayout';
 import { Student } from './student';
+import { Account } from './account';
+import { SingleCourse } from './singleCourse';
 
 export {
   Admin,
@@ -20,10 +22,12 @@ export {
   Register,
   Courses,
   Error,
-  UserDashboard,
+  Dashboard,
   AdminLayout,
   ProtectedAdminRoute,
   ProtectedStntRoute,
   StudentLayout,
   Student,
+  Account,
+  SingleCourse,
 };

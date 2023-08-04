@@ -1,12 +1,12 @@
 import { useSelector, useDispatch } from 'react-redux';
-import {
-  openModal,
-  closeModal,
-} from '../../features/logoutModal/logoutModalSlice';
+import { useNavigate } from 'react-router-dom';
+import { closeModal } from '../../features/logoutModal/logoutModalSlice';
+import { logout } from '../../features/user/userSlice';
 
 const LogoutModal = ({ children }) => {
   const dispatch = useDispatch();
   const { isOpen } = useSelector((store) => store.logoutModal);
+  const navigate = useNavigate();
 
   if (!isOpen) return null;
 
@@ -15,11 +15,20 @@ const LogoutModal = ({ children }) => {
       <div className="modal">
         <h4>Are you sure you want to sign out?</h4>
         <div>
-          <button className="close-button">confirm</button>
+          <button
+            className="close-button"
+            onClick={() => {
+              dispatch(closeModal());
+              dispatch(logout());
+              navigate('/login');
+            }}
+          >
+            confirm
+          </button>
           <button
             className="open-button"
             onClick={() => {
-              dispatch(closeModal());
+              return dispatch(closeModal());
             }}
           >
             cancel

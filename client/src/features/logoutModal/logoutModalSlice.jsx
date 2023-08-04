@@ -8,10 +8,10 @@ const logoutModalSlice = createSlice({
   name: 'logoutModal',
   initialState,
   reducers: {
-    openModal: (state, action) => {
+    openModal: (state) => {
       state.isOpen = true;
     },
-    closeModal: (state, action) => {
+    closeModal: (state) => {
       state.isOpen = false;
     },
   },

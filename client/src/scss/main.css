@@ -1,39 +1,96 @@
+/* color pallet */
+/* --  end  -- */
+/* borders */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  text-decoration: none;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  background-color: #ebf2fa;
+  height: 100vh;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 @font-face {
   font-family: "Roboto";
   src: url("../assets/fonts/Roboto/Roboto-Bold.ttf") format("ttf"), url("../assets/fonts/Roboto/Roboto-Light.ttf") format("ttf"), url("../assets/fonts/Roboto/Roboto-Regular.ttf") format("ttf"), url("../assets/fonts/Roboto/Roboto-Medium.ttf") format("ttf");
 }
-/* borders */
-.test-scss {
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+h3 {
+  font-size: 0.9rem;
+}
+
+.home-container {
+  margin-top: 5.5rem;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
   font-family: "Roboto", sans-serif;
   font-weight: medium;
   font-size: larger;
 }
 
+.header-fixed {
+  position: relative;
+  z-index: 3;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
 .nav-container {
+  display: flex;
+  flex-direction: column;
   background-color: #266dd3;
   height: 70px;
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 10px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 0 0 3px 3px;
+  position: fixed;
 }
 .nav-container svg {
   height: 2em;
   width: 2em;
 }
+.nav-container .navbar {
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-container .navbar div:nth-child(2) {
+  width: 9rem;
+}
+.nav-container div {
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-container li:nth-child(1) {
+  padding: 0 5px;
+}
 
 .nav-container.show {
   height: -moz-fit-content;
   height: fit-content;
+  padding-top: 0;
 }
 
 .menu-icon {
@@ -54,7 +111,7 @@
 }
 
 .nav-links li {
-  padding: 8px;
+  padding: 10px;
 }
 
 .nav-links a {
@@ -63,14 +120,14 @@
 }
 
 .drop-down {
-  width: 70px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
 }
 
 .drop-down.show {
-  align-self: flex-start;
+  display: flex;
+  align-items: end;
 }
 
 /* You can add more styles as needed */
@@ -158,7 +215,7 @@ h2 {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.3);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -192,22 +249,101 @@ h2 {
 }
 
 .open-button {
-  background-color: #018e42;
+  background-color: #2f3632;
   border-radius: 5%;
   border: none;
   font-size: 20px;
   cursor: pointer;
 }
 
-body {
-  background-color: #ebf2fa;
-  height: 100vh;
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
-#root {
+.spinner {
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.tab-container {
   display: flex;
-  flex-direction: column;
+  height: 50px;
+  align-items: center;
+  background-color: #0353a4;
+}
+
+.tab {
+  background-color: #979dac;
+  border-bottom: 1px solid #010001;
   height: 100%;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+.tab a {
+  text-decoration: none;
+  color: #333;
+}
+
+.active-div {
+  background-color: #ebf2fa;
+  border-bottom: none;
+}
+
+.tab:hover {
+  background-color: #ebf2fa;
+  border-bottom: none;
+}
+
+.carousel-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 393px;
+}
+.carousel-container h3 {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.carousel-item {
+  width: 393px;
+  padding: 0.8em;
+  position: relative;
+}
+.carousel-item .img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 550px;
+  overflow: hidden;
+}
+.carousel-item h5 {
+  position: absolute;
+  top: 50%;
+  width: calc(100% - 0.8em);
+  text-align: center;
+}
+.carousel-item img {
+  width: 550px;
+  opacity: 50%;
 }
 
 .active {

@@ -4,7 +4,8 @@ const logger = require('./logger');
 const register = require('./register');
 const dashboard = require('./stdntDashboard');
 const passport = require('passport');
-const login = require('../routes/login');
+const login = require('./login');
+const courses = require('./courses');
 
 router.use(express.urlencoded({ extended: false }));
 
@@ -15,6 +16,8 @@ require('../config/passport')(passport);
 router.use(passport.initialize());
 
 router.use(logger);
+
+router.use('/courses', courses);
 
 router.use('/login', login);
 

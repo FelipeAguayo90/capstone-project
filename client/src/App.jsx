@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import {
   HomeLayout,
   Home,
@@ -8,25 +7,24 @@ import {
   Courses,
   Register,
   Error,
-  UserDashboard,
+  Dashboard,
   AdminLayout,
   ProtectedAdminRoute,
   ProtectedStntRoute,
   StudentLayout,
   Student,
+  Account,
+  SingleCourse,
 } from './pages';
-// import { useState } from 'react';
 
 function App() {
-  // const [user, setuser] = useState(false);
-  const { user } = useSelector((store) => store.user);
-  console.log(user);
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomeLayout />}>
           <Route index element={<Home />} />
           <Route path="courses" element={<Courses />} />
+          <Route path="courses/:courseId" element={<SingleCourse />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route
@@ -38,6 +36,9 @@ function App() {
             }
           >
             <Route index element={<Admin />} />
+            <Route path="admin/dashboard" element={<Dashboard />} />
+            <Route path="admin/courses" element={<Courses />} />
+            <Route path="admin/account" element={<Account />} />
           </Route>
           <Route
             path="/student"
@@ -48,7 +49,9 @@ function App() {
             }
           >
             <Route index element={<Student />} />
-            <Route path="/student/dashboard" element={<UserDashboard />} />
+            <Route path="/student/dashboard" element={<Dashboard />} />
+            <Route path="/student/courses" element={<Courses />} />
+            <Route path="/student/account" element={<Account />} />
           </Route>
           <Route path="*" element={<Error />} />
         </Route>
