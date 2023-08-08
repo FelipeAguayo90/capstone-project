@@ -5,6 +5,7 @@ import navbarReducer from './features/navbar/navbarSlice';
 import tabBarReducer from './features/tabBar/tabBarSlice';
 import formsDataReducer from './features/formsData/formsDataSlice';
 import carouselReducer from './features/carousel/carouselSlice';
+import registerReducer from './features/register/registerSlice';
 
 export const store = configureStore({
   reducer: {
@@ -14,5 +15,6 @@ export const store = configureStore({
     tabBar: tabBarReducer,
     formsData: formsDataReducer,
     carousel: carouselReducer,
+    register: registerReducer,
   },
 });

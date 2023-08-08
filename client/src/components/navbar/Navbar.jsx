@@ -25,7 +25,14 @@ const Navbar = () => {
             {user.user ? (
               <h4>{user.first_name}</h4>
             ) : (
-              <NavLink to="/register">enroll today</NavLink>
+              <NavLink
+                onClick={() => {
+                  dispatch(toggleMenu(isMenuOpen));
+                }}
+                to="/register"
+              >
+                enroll today
+              </NavLink>
             )}
 
             <HiBars4

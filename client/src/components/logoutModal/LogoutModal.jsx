@@ -16,7 +16,7 @@ const LogoutModal = ({ children }) => {
         <h4>Are you sure you want to sign out?</h4>
         <div>
           <button
-            className="close-button"
+            className="button-3"
             onClick={() => {
               dispatch(closeModal());
               dispatch(logout());
@@ -26,7 +26,7 @@ const LogoutModal = ({ children }) => {
             confirm
           </button>
           <button
-            className="open-button"
+            className="button-3"
             onClick={() => {
               return dispatch(closeModal());
             }}

@@ -14,7 +14,9 @@ const formsDataSlice = createSlice({
       state.loginForm = { ...state.loginForm, [name]: value };
     },
     setRegisterDt: (state, action) => {
-      state.registerForm = action.payload;
+      const { name, value } = action.payload;
+      state.registerForm = { ...state.registerForm, [name]: value };
+      console.log(state.registerForm);
     },
   },
 });

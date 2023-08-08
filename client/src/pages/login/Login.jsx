@@ -15,7 +15,7 @@ const Login = () => {
   return (
     <div className="login-container">
       <form
-        className="login-form"
+        className="form"
         onSubmit={async (e) => {
           try {
             e.preventDefault();
@@ -31,7 +31,7 @@ const Login = () => {
           }
         }}
       >
-        <h2>MTECH</h2>
+        <h2>MTEC</h2>
         <div className="form-control">
           <label htmlFor="username">username</label>
           <input
@@ -53,9 +53,11 @@ const Login = () => {
           />
         </div>
         <small className="form-alert"></small>
-        <button className="button-3" type="submit">
-          login
-        </button>
+        <div className="btn-container">
+          <button className="button-3" type="submit">
+            login
+          </button>
+        </div>
       </form>
     </div>
   );

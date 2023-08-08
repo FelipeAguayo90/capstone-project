@@ -8,6 +8,93 @@
   text-decoration: none;
 }
 
+.form {
+  width: 80%;
+  margin-top: 30%;
+  padding: 30px;
+  border-radius: 0.5em;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+}
+.form-control label {
+  padding: 0.5em 0;
+}
+.form-control input[type=text],
+.form-control input[type=password],
+.form-control input[type=email] {
+  height: 2em;
+  border: 0.5em;
+  border: solid 1px #e5e5e5;
+}
+
+/* ---- buttons ---- */
+.button-3 {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: #023e7d;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 0.5em;
+  box-shadow: rgba(27, 31, 35, 0.1) 0 1px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 0.5em 2em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  -moz-user-select: none;
+       user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  margin: 0.5em auto;
+}
+
+.button-3:focus:not(:focus-visible):not(.focus-visible) {
+  box-shadow: none;
+  outline: none;
+}
+
+.button-3:hover {
+  background-color: #0353a4;
+}
+
+.button-3:focus {
+  box-shadow: rgba(46, 164, 79, 0.4) 0 0 0 3px;
+  outline: none;
+}
+
+.button-3:disabled {
+  background-color: #979dac;
+  border-color: rgba(27, 31, 35, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  cursor: default;
+}
+
+.button-3:active {
+  background-color: #001845;
+  box-shadow: rgba(20, 70, 32, 0.2) 0 1px 0 inset;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
 html {
   font-size: 16px;
 }
@@ -29,6 +116,7 @@ body {
 }
 body {
   font-family: "Roboto", sans-serif;
+  text-transform: capitalize;
 }
 
 h3 {
@@ -139,71 +227,7 @@ h3 {
   flex-grow: 1;
 }
 
-.login-form {
-  width: 80%;
-  margin-top: 30%;
-  padding: 30px;
-  border-radius: 5px;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
-  /* CSS */
-}
-.login-form .form-control {
-  display: flex;
-  flex-direction: column;
-  padding: 5px;
-}
-.login-form .form-control label {
-  padding: 0.5em 0;
-}
-.login-form .button-3 {
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  background-color: #3e92cc;
-  border: 1px solid rgba(27, 31, 35, 0.15);
-  border-radius: 6px;
-  box-shadow: rgba(27, 31, 35, 0.1) 0 1px 0;
-  box-sizing: border-box;
-  color: #fff;
-  cursor: pointer;
-  display: inline-block;
-  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 20px;
-  padding: 6px 16px;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  -moz-user-select: none;
-       user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: middle;
-  white-space: nowrap;
-}
-.login-form .button-3:focus:not(:focus-visible):not(.focus-visible) {
-  box-shadow: none;
-  outline: none;
-}
-.login-form .button-3:hover {
-  background-color: #2c974b;
-}
-.login-form .button-3:focus {
-  box-shadow: rgba(46, 164, 79, 0.4) 0 0 0 3px;
-  outline: none;
-}
-.login-form .button-3:disabled {
-  background-color: #94d3a2;
-  border-color: rgba(27, 31, 35, 0.1);
-  color: rgba(255, 255, 255, 0.8);
-  cursor: default;
-}
-.login-form .button-3:active {
-  background-color: #298e46;
-  box-shadow: rgba(20, 70, 32, 0.2) 0 1px 0 inset;
-}
-
+/* CSS */
 h2 {
   text-align: center;
   margin-bottom: 10px;
@@ -219,6 +243,7 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 5;
 }
 
 .modal {
@@ -241,8 +266,8 @@ h2 {
 }
 
 .close-button {
-  background-color: #b9272c;
-  border-radius: 5%;
+  background-color: #f0aeb0;
+  border-radius: 0.5em;
   border: none;
   font-size: 20px;
   cursor: pointer;
@@ -250,7 +275,7 @@ h2 {
 
 .open-button {
   background-color: #2f3632;
-  border-radius: 5%;
+  border-radius: 0.5em;
   border: none;
   font-size: 20px;
   cursor: pointer;
@@ -278,6 +303,7 @@ h2 {
   }
 }
 .tab-container {
+  margin-top: 4.3rem;
   display: flex;
   height: 50px;
   align-items: center;
@@ -286,7 +312,7 @@ h2 {
 
 .tab {
   background-color: #979dac;
-  border-bottom: 1px solid #010001;
+  border-bottom: 2px solid #0353a4;
   height: 100%;
   flex-grow: 1;
   display: flex;
@@ -313,20 +339,65 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  height: -moz-fit-content;
-  height: fit-content;
+  flex-direction: row;
+  position: relative;
+  z-index: 2;
   width: 393px;
+  height: 700px;
+  min-height: 600px;
+  overflow: hidden;
 }
 .carousel-container h3 {
   text-align: center;
   margin-bottom: 1em;
 }
+.carousel-container .chevron {
+  height: 3rem;
+  width: 3rem;
+}
+.carousel-container .title {
+  position: relative;
+  top: 15em;
+}
+
+section.carousel-btn {
+  width: 393px;
+  position: absolute;
+  top: 450px;
+}
+section.carousel-btn button {
+  background-color: rgba(235, 242, 250, 0);
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.prev:hover,
+.next:hover {
+  color: red;
+}
+
+.prev {
+  position: absolute;
+  bottom: 9em;
+  left: 0;
+}
+
+.next {
+  position: absolute;
+  bottom: 9em;
+  right: 0;
+}
 
 .carousel-item {
   width: 393px;
   padding: 0.8em;
-  position: relative;
+  position: absolute;
+  top: 0.2em;
+  left: calc(50% - 196.5px);
+  z-index: -1;
+  opacity: 0;
+  transition: transform 0.8s ease;
 }
 .carousel-item .img-container {
   display: flex;
@@ -334,6 +405,7 @@ h2 {
   align-items: center;
   height: 550px;
   overflow: hidden;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 .carousel-item h5 {
   position: absolute;
@@ -344,6 +416,34 @@ h2 {
 .carousel-item img {
   width: 550px;
   opacity: 50%;
+}
+
+.active-slide {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.previous-slide {
+  transform: translateX(-110%);
+}
+
+.next-slide {
+  transform: translateX(110%);
+}
+
+section.form-container {
+  height: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 5.5rem;
+}
+section.form-container small {
+  padding: 0.3em;
+  border-radius: 0.5em;
+  background-color: #f0aeb0;
+  border: solid 1px salmon;
 }
 
 .active {

@@ -1,8 +1,12 @@
 .carousel-item {
   width: 393px;
   padding: 0.8em;
-  position: relative;
-  //   overflow: hidden;
+  position: absolute;
+  top: 0.2em;
+  left: calc(50% - 393px / 2);
+  z-index: -1;
+  opacity: 0;
+  transition: transform 0.8s ease;
 
   .img-container {
     display: flex;
@@ -11,13 +15,14 @@
     height: 550px;
     // width: 393px;
     overflow: hidden;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+      rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
   }
 
   h5 {
     position: absolute;
     top: 50%;
-    // left: 68px;
-    // width: 100%;
+
     width: calc(100% - 0.8em);
 
     text-align: center;
@@ -27,4 +32,17 @@
     width: 550px;
     opacity: 50%;
   }
+}
+
+.active-slide {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.previous-slide {
+  transform: translateX(-110%);
+}
+
+.next-slide {
+  transform: translateX(110%);
 }

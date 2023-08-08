@@ -1,18 +1,53 @@
 .carousel-container {
-  // margin-top: 5.5rem;
-  @include flexCenter(center, column, center);
-  height: fit-content;
+  @include flexCenter(center, row, center);
+  position: relative;
+  z-index: 2;
   width: 393px;
+  height: 700px;
+  min-height: 600px;
+  overflow: hidden;
 
   h3 {
     text-align: center;
     margin-bottom: 1em;
   }
+
+  .chevron {
+    height: 3rem;
+    width: 3rem;
+  }
+
+  .title {
+    position: relative;
+    top: 15em;
+  }
 }
 
-// @mixin flexCenter($align, $direction, $justify) {
-//   display: flex;
-//   justify-content: $justify;
-//   align-items: $align;
-//   flex-direction: $direction;
-// }
+section.carousel-btn {
+  width: 393px;
+  position: absolute;
+  top: 450px;
+
+  button {
+    background-color: rgba($color: $tertiary-color, $alpha: 0);
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.prev:hover,
+.next:hover {
+  color: red;
+}
+
+.prev {
+  position: absolute;
+  bottom: 9em;
+  left: 0;
+}
+.next {
+  position: absolute;
+  bottom: 9em;
+  right: 0;
+}

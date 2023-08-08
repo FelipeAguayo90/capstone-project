@@ -1,0 +1,13 @@
+section.form-container {
+  height: 100%;
+  @include flexCenter(center, column, start);
+  margin-top: 5.5rem;
+
+  small {
+    // margin: 0.3em;
+    padding: 0.3em;
+    border-radius: $border-radius;
+    background-color: $danger-color;
+    border: solid 1px salmon;
+  }
+}

@@ -4,6 +4,7 @@ const url = 'api/v1/courses';
 
 const initialState = {
   carouselItems: [],
+  index: 0,
   isLoading: true,
 };
 
@@ -19,7 +20,24 @@ export const getCarouselItms = createAsyncThunk(
 const carouselSlice = createSlice({
   name: 'carousel',
   initialState,
-  reducers: {},
+  reducers: {
+    nextSlide: (state) => {
+      console.log(state.index);
+      if (state.index === state.carouselItems.length - 1) {
+        state.index = 0;
+        return;
+      }
+      state.index = state.index + 1;
+    },
+    prevSlide: (state) => {
+      console.log(state.index);
+      if (state.index === 0) {
+        state.index = state.carouselItems.length - 1;
+        return;
+      }
+      state.index = state.index - 1;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getCarouselItms.pending, (state) => {
@@ -35,6 +53,6 @@ const carouselSlice = createSlice({
   },
 });
 
-export const {} = carouselSlice.actions;
+export const { nextSlide, prevSlide } = carouselSlice.actions;
 
 export default carouselSlice.reducer;
