@@ -1,10 +1,13 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getUser } from '../../features/user/userSlice';
 import { useNavigate } from 'react-router-dom';
 import { setLoginDt } from '../../features/formsData/formsDataSlice';
+import { Link } from 'react-router-dom';
+import img1 from '../../assets/images/MTEC-1.png';
 
 const Login = () => {
   const dispatch = useDispatch();
+  const { invalCredentials } = useSelector((store) => store.user);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -20,7 +23,7 @@ const Login = () => {
           try {
             e.preventDefault();
             const data = await dispatch(getUser());
-            console.log(data);
+
             const { is_admin } = data.payload;
             if (is_admin) {
               return navigate('/admin/');
@@ -33,7 +36,7 @@ const Login = () => {
       >
         <h2>MTEC</h2>
         <div className="form-control">
-          <label htmlFor="username">username</label>
+          <label htmlFor="username">username:</label>
           <input
             type="text"
             id="username"
@@ -43,7 +46,7 @@ const Login = () => {
           />
         </div>
         <div className="form-control">
-          <label htmlFor="password">password</label>
+          <label htmlFor="password">password:</label>
           <input
             type="password"
             name="password"
@@ -52,12 +55,17 @@ const Login = () => {
             required
           />
         </div>
-        <small className="form-alert"></small>
+        {invalCredentials && (
+          <ul>
+            <li>The user name or password provided is incorrect.</li>
+          </ul>
+        )}
         <div className="btn-container">
           <button className="button-3" type="submit">
             login
           </button>
         </div>
+        <Link to="/register">register today</Link>
       </form>
     </div>
   );

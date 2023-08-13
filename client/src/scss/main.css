@@ -10,16 +10,16 @@
 
 .form {
   width: 80%;
-  margin-top: 30%;
-  padding: 30px;
+  padding: 2em;
   border-radius: 0.5em;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  border: solid 1px #023e7d;
 }
 
 .form-control {
   display: flex;
   flex-direction: column;
-  padding: 5px;
+  padding: 0.5em;
 }
 .form-control label {
   padding: 0.5em 0;
@@ -97,19 +97,38 @@
 
 html {
   font-size: 16px;
+  background-color: white;
 }
 
 body {
   background-color: #ebf2fa;
-  height: 100vh;
+  min-height: 100vh;
+}
+
+a {
+  color: #010001;
 }
 
 #root {
+  position: relative;
   display: flex;
   flex-direction: column;
   height: 100%;
+  width: 100%;
 }
 
+@media (min-width: 768px) {
+  body {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+@media (min-width: 1024px) {
+  body {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
 @font-face {
   font-family: "Roboto";
   src: url("../assets/fonts/Roboto/Roboto-Bold.ttf") format("ttf"), url("../assets/fonts/Roboto/Roboto-Light.ttf") format("ttf"), url("../assets/fonts/Roboto/Roboto-Regular.ttf") format("ttf"), url("../assets/fonts/Roboto/Roboto-Medium.ttf") format("ttf");
@@ -135,11 +154,26 @@ h3 {
   font-size: larger;
 }
 
+@media (min-width: 768px) {
+  .home-container {
+    margin: 1em;
+  }
+}
 .header-fixed {
+  width: 100%;
   position: relative;
   z-index: 3;
   height: -moz-fit-content;
   height: fit-content;
+}
+.header-fixed .large {
+  display: none;
+}
+.header-fixed .small {
+  width: 120px;
+}
+.header-fixed .small a {
+  margin-right: 1em;
 }
 
 .nav-container {
@@ -151,6 +185,8 @@ h3 {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 0 0 3px 3px;
   position: fixed;
+  top: 0;
+  left: 0;
 }
 .nav-container svg {
   height: 2em;
@@ -164,6 +200,9 @@ h3 {
 }
 .nav-container .navbar div:nth-child(2) {
   width: 9rem;
+}
+.nav-container .navbar li:hover {
+  cursor: pointer;
 }
 .nav-container div {
   padding: 5px;
@@ -218,16 +257,65 @@ h3 {
   align-items: end;
 }
 
-/* You can add more styles as needed */
+@media (min-width: 768px) {
+  .nav-container {
+    width: 100%;
+    position: relative;
+    z-index: 3;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  .navbar div:nth-child(2) {
+    display: none;
+  }
+}
+@media (min-width: 1024px) {
+  .nav-container .large {
+    display: flex;
+    list-style: none;
+  }
+  .nav-container .large li {
+    margin: 0 1em;
+  }
+  .nav-container .large h4 {
+    margin: 0 1em;
+  }
+  .nav-container .small {
+    display: none;
+  }
+}
 .login-container {
+  width: 393px;
+  margin: 10em auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: start;
+  justify-content: center;
   flex-grow: 1;
+  max-width: 500px;
+}
+.login-container ul {
+  background-color: #ebd0cf;
+  margin: 0.5em;
+  border: solid 1px #dca7a7;
+}
+.login-container ul li {
+  padding: 0.5em;
+  margin-left: 1.5em;
+  background-color: #ebd0cf;
+  color: #a94342;
+  font-size: 0.8rem;
+  text-transform: none;
+}
+.login-container a {
+  padding: 0.5em;
+  font-size: 0.8em;
+  text-decoration: underline;
+  display: block;
+  text-align: center;
+  width: 100%;
 }
 
-/* CSS */
 h2 {
   text-align: center;
   margin-bottom: 10px;
@@ -266,7 +354,7 @@ h2 {
 }
 
 .close-button {
-  background-color: #f0aeb0;
+  background-color: #ebd0cf;
   border-radius: 0.5em;
   border: none;
   font-size: 20px;
@@ -307,13 +395,13 @@ h2 {
   display: flex;
   height: 50px;
   align-items: center;
-  background-color: #0353a4;
+  width: 100%;
 }
 
 .tab {
   background-color: #979dac;
   border-bottom: 2px solid #0353a4;
-  height: 100%;
+  height: 3em;
   flex-grow: 1;
   display: flex;
   align-items: center;
@@ -333,6 +421,41 @@ h2 {
 .tab:hover {
   background-color: #ebf2fa;
   border-bottom: none;
+}
+
+@media (min-width: 768px) {
+  .tab-container {
+    margin-top: -0.2em;
+  }
+}
+.single-course {
+  max-width: 400px;
+  margin: 5.5rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.single-course .img-container {
+  position: relative;
+  width: 393px;
+  height: 390px;
+  z-index: 1;
+  overflow: hidden;
+}
+.single-course .img-container img {
+  width: 400px;
+}
+.single-course h4 {
+  margin: 1em;
+}
+.single-course p {
+  text-transform: none;
+  text-indent: 2em;
+  margin: 1em;
+}
+.single-course a {
+  margin: 1em;
 }
 
 .carousel-container {
@@ -374,7 +497,7 @@ section.carousel-btn button {
 
 .prev:hover,
 .next:hover {
-  color: red;
+  color: #3e92cc;
 }
 
 .prev {
@@ -389,6 +512,14 @@ section.carousel-btn button {
   right: 0;
 }
 
+@media (min-width: 768px) {
+  .carousel-container {
+    width: 500px;
+  }
+  .carousel-container .carousel-btn {
+    width: 500px;
+  }
+}
 .carousel-item {
   width: 393px;
   padding: 0.8em;
@@ -431,6 +562,12 @@ section.carousel-btn button {
   transform: translateX(110%);
 }
 
+@media (min-width: 768px) {
+  .carousel-item {
+    width: 500px;
+    left: calc(50% - 250px);
+  }
+}
 section.form-container {
   height: 100%;
   display: flex;
@@ -442,8 +579,112 @@ section.form-container {
 section.form-container small {
   padding: 0.3em;
   border-radius: 0.5em;
-  background-color: #f0aeb0;
+  background-color: #ebd0cf;
   border: solid 1px salmon;
+}
+section.form-container ul {
+  background-color: #f7edd2;
+  margin: 0.5em;
+  border: solid 1px #ffc007;
+}
+section.form-container ul li {
+  padding: 0.5em;
+  margin-left: 1.5em;
+  color: #ffc007;
+  font-size: 0.8rem;
+  text-transform: none;
+}
+section.form-container ul.warning {
+  background-color: #ebd0cf;
+  border: solid 1px #dca7a7;
+}
+section.form-container ul.warning li {
+  background-color: #ebd0cf;
+  color: #a94342;
+  text-transform: none;
+}
+
+.courses-container {
+  height: 100%;
+  margin-top: 5.5rem;
+}
+.courses-container h2 {
+  text-align: center;
+}
+.courses-container hr {
+  margin: 1em;
+}
+.courses-container .search,
+.courses-container .filter {
+  width: 100%;
+}
+.courses-container .search label,
+.courses-container .filter label {
+  margin: 0 0.5em;
+}
+.courses-container .search form,
+.courses-container .filter form {
+  display: flex;
+  justify-content: center;
+}
+.courses-container button {
+  margin: 0 0.5em;
+}
+
+#search {
+  width: 80%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.cards-container {
+  margin: 1em 0;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 768px) {
+  .courses-container {
+    margin: 1em;
+  }
+}
+.search-filter {
+  display: flex;
+  justify-content: space-around;
+}
+
+article.card {
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+  margin: 0.5rem;
+  width: 10.5rem;
+  height: 13.5rem;
+  border-radius: 0.5em;
+  background-color: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+article.card .course-name {
+  height: 45%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 0.5em;
+}
+
+div.img-card {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  width: 100%;
+  height: 50%;
+}
+div.img-card img {
+  width: 100%;
 }
 
 .active {

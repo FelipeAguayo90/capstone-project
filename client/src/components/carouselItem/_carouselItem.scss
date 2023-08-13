@@ -46,3 +46,10 @@
 .next-slide {
   transform: translateX(110%);
 }
+
+@media (min-width: 768px) {
+  .carousel-item {
+    width: 500px;
+    left: calc(50% - 500px / 2);
+  }
+}

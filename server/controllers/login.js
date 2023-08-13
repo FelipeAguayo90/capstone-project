@@ -15,13 +15,17 @@ const login = asyncWrapper(async (req, res) => {
     if (error) {
       return res.status(500).json({ msg: error });
     }
-    if (results < 1) {
-      return res.status(404).json({ msg: 'User does not exist' });
+    if (results.rows < 1) {
+      return res
+        .status(500)
+        .json({ msg: 'The user name or password provided is incorrect.' });
     }
     let isMatched = bcrypt.compareSync(password, results.rows[0].passhash);
-
     if (!isMatched) {
-      return res.status(400).json({ msg: 'Wrong password' });
+      console.log('password');
+      return res
+        .status(500)
+        .json({ msg: 'The user name or password provided is incorrect.' });
     }
     const token = jwt.sign({ username: username }, process.env.JWT_SECRET, {
       algorithm: 'HS256',

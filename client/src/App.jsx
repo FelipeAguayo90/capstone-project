@@ -28,7 +28,7 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route
-            path="admin"
+            path="/admin"
             element={
               <ProtectedAdminRoute>
                 <AdminLayout />
@@ -36,9 +36,9 @@ function App() {
             }
           >
             <Route index element={<Admin />} />
-            <Route path="admin/dashboard" element={<Dashboard />} />
-            <Route path="admin/courses" element={<Courses />} />
-            <Route path="admin/account" element={<Account />} />
+            <Route path="/admin/dashboard" element={<Dashboard />} />
+            <Route path="/admin/courses" element={<Courses />} />
+            <Route path="/admin/account" element={<Account />} />
           </Route>
           <Route
             path="/student"

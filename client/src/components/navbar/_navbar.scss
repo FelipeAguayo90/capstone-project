@@ -1,7 +1,17 @@
 .header-fixed {
+  width: 100%;
   position: relative;
   z-index: 3;
   height: fit-content;
+  .large {
+    display: none;
+  }
+  .small {
+    width: 120px;
+    a {
+      margin-right: 1em;
+    }
+  }
 }
 
 .nav-container {
@@ -13,6 +23,8 @@
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 0 0 3px 3px;
   position: fixed;
+  top: 0;
+  left: 0;
 
   svg {
     height: 2em;
@@ -26,6 +38,9 @@
     align-items: center;
     div:nth-child(2) {
       width: 9rem;
+    }
+    li:hover {
+      cursor: pointer;
     }
   }
 
@@ -84,4 +99,37 @@
   display: flex;
   align-items: end;
 }
-/* You can add more styles as needed */
+
+@media (min-width: 768px) {
+  .nav-container {
+    width: 100%;
+    position: relative;
+    z-index: 3;
+    height: fit-content;
+  }
+  .navbar {
+    div:nth-child(2) {
+      display: none;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .nav-container {
+    .large {
+      display: flex;
+
+      list-style: none;
+      li {
+        margin: 0 1em;
+      }
+      h4 {
+        margin: 0 1em;
+      }
+    }
+
+    .small {
+      display: none;
+    }
+  }
+}

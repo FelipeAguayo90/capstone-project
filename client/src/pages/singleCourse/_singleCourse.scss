@@ -1,0 +1,30 @@
+.single-course {
+  max-width: 400px;
+  //   margin-top: 5.5rem;
+  margin: 5.5rem auto;
+  @include flexCenter(center, column, center);
+
+  .img-container {
+    position: relative;
+    width: 393px;
+    height: 390px;
+    z-index: 1;
+    overflow: hidden;
+
+    img {
+      width: 400px;
+    }
+  }
+
+  h4 {
+    margin: 1em;
+  }
+  p {
+    text-transform: none;
+    text-indent: 2em;
+    margin: 1em;
+  }
+  a {
+    margin: 1em;
+  }
+}

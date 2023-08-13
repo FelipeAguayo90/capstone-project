@@ -38,7 +38,7 @@ section.carousel-btn {
 
 .prev:hover,
 .next:hover {
-  color: red;
+  color: $secondary-color;
 }
 
 .prev {
@@ -50,4 +50,14 @@ section.carousel-btn {
   position: absolute;
   bottom: 9em;
   right: 0;
+}
+
+@media (min-width: 768px) {
+  .carousel-container {
+    width: 500px;
+
+    .carousel-btn {
+      width: 500px;
+    }
+  }
 }

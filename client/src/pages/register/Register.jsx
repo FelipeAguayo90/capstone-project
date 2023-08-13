@@ -1,8 +1,19 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setRegisterDt } from '../../features/formsData/formsDataSlice';
+import {
+  registerUser,
+  dsplLowerCsMsg,
+  dsplHasNum,
+  dsplSpclCharMsg,
+  dsplUpperCsMsg,
+  dsplShortMsg,
+} from '../../features/register/registerSlice';
+import { setUser } from '../../features/user/userSlice';
+import { useState } from 'react';
 
 const Register = () => {
+  const [isFocused, setIsFocused] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const {
@@ -14,24 +25,79 @@ const Register = () => {
     invalEmail,
     hasNumber,
   } = useSelector((store) => store.register);
+  const { password } = useSelector((store) => store.formsData.registerForm);
 
-  console.log(
-    isShort,
-    hasUpperCs,
-    hasLowerCs,
-    hasSpclChar,
-    invalUsername,
-    invalEmail
-  );
+  const handleFocus = () => {
+    setIsFocused(true);
+  };
 
-  const handleChange = (event) => {
+  const handleBlur = () => {
+    setIsFocused(false);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(password);
+    const lowerCs = /(?=.*[a-z])/;
+    const upperCs = /^(?=.*[A-Z]).+$/;
+    const spclChar = /(?=.*[!@#$%^&*()\-_=+{};:,<.>/?[\]\\|])/;
+    const num = /(?=.*\d)/;
+    if (password.length < 8) {
+      return dispatch(dsplShortMsg());
+    }
+    if (!lowerCs.test(password)) {
+      return dispatch(dsplLowerCsMsg());
+    }
+    if (!upperCs.test(password)) {
+      return dispatch(dsplUpperCsMsg());
+    }
+    if (!spclChar.test(password)) {
+      return dispatch(dsplSpclCharMsg());
+    }
+    if (!num.test(password)) {
+      return dispatch(dsplHasNum());
+    }
+
+    try {
+      const data = await dispatch(registerUser());
+      console.log(data);
+      const { email, first_name, is_admin, last_login, user_id, user, token } =
+        data.payload;
+      dispatch(
+        setUser({
+          email,
+          first_name,
+          is_admin,
+          last_login,
+          user_id,
+          user,
+          token,
+        })
+      );
+      if (data.payload.msg.name !== 'error') {
+        if (is_admin) {
+          return navigate('/admin/');
+        }
+        return navigate('/student/');
+      }
+    } catch (error) {
+      console.log('something went wrong');
+    }
+  };
+
+  const handleChange = async (event) => {
     const { name, value } = event.target;
     dispatch(setRegisterDt({ name, value }));
   };
 
   return (
     <section className="form-container">
-      <form className="form" /*onSubmit={handleSubmit}*/>
+      <form
+        className="form"
+        onSubmit={(e) => {
+          handleSubmit(e);
+        }}
+      >
         <h2>register</h2>
         <div className="form-control">
           <label htmlFor="username">Username:</label>
@@ -42,7 +108,11 @@ const Register = () => {
             required
             onChange={handleChange}
           />
-          {invalUsername && <small>Username already exists!</small>}
+          {invalUsername && (
+            <ul className="warning">
+              <li>Username already exists!</li>
+            </ul>
+          )}
         </div>
         <div className="form-control">
           <label htmlFor="email">Email:</label>
@@ -53,7 +123,11 @@ const Register = () => {
             required
             onChange={handleChange}
           />
-          {invalEmail && <small>Username already exists!</small>}
+          {invalEmail && (
+            <ul className="warning">
+              <li>Email already exists!</li>
+            </ul>
+          )}
         </div>
         <div className="form-control">
           <label htmlFor="password">Password:</label>
@@ -62,18 +136,39 @@ const Register = () => {
             id="password"
             name="password"
             required
+            onFocus={handleFocus}
+            onBlur={handleBlur}
             onChange={handleChange}
           />
+          {isFocused && (
+            <ul>
+              <li>Password must be at least 8 characters long.</li>
+              <li>Password must have one uppercase letter.</li>
+              <li>Password must have one special character.</li>
+              <li>Password must have a lowercase letter.</li>
+              <li>Password must have one number.</li>
+            </ul>
+          )}
           {isShort ? (
-            <small>Password is not long enough!</small>
+            <ul className="warning">
+              <li>Password must be at least 8 characters long.</li>
+            </ul>
           ) : hasUpperCs ? (
-            <small>Password must have one uppercase letter!</small>
+            <ul className="warning">
+              <li>Password must have one uppercase letter.</li>
+            </ul>
           ) : hasLowerCs ? (
-            <small>Password must have a lowercase letter!</small>
+            <ul className="warning">
+              <li>Password must have a lowercase letter.</li>
+            </ul>
           ) : hasSpclChar ? (
-            <small>Password must have one special character!</small>
+            <ul className="warning">
+              <li>Password must have one special character.</li>
+            </ul>
           ) : hasNumber ? (
-            <small>Password must have one number!</small>
+            <ul className="warning">
+              <li>Password must have one number.</li>
+            </ul>
           ) : null}
         </div>
         <div className="form-control">

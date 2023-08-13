@@ -6,3 +6,9 @@
   font-weight: medium;
   font-size: larger;
 }
+
+@media (min-width: 768px) {
+  .home-container {
+    margin: 1em;
+  }
+}

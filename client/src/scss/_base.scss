@@ -1,14 +1,35 @@
 html {
   font-size: 16px;
+  background-color: white;
 }
 
 body {
   background-color: $tertiary-color;
-  height: 100vh;
+  min-height: 100vh;
+}
+
+a {
+  color: $black-color;
 }
 
 #root {
+  position: relative;
   display: flex;
   flex-direction: column;
   height: 100%;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  body {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    width: 80%;
+    margin: 0 auto;
+  }
 }

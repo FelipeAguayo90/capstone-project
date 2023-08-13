@@ -1,0 +1,51 @@
+.courses-container {
+  height: 100%;
+  margin-top: 5.5rem;
+  h2 {
+    text-align: center;
+  }
+
+  hr {
+    margin: 1em;
+  }
+
+  .search,
+  .filter {
+    width: 100%;
+    label {
+      margin: 0 0.5em;
+    }
+    form {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  button {
+    margin: 0 0.5em;
+  }
+}
+
+#search {
+  width: 80%;
+  text-align: center;
+  margin: 0 auto;
+}
+.cards-container {
+  margin: 1em 0;
+  height: 100%;
+  @include flexCenter(start, row, center);
+  flex-wrap: wrap;
+  // max-width: 393px;
+}
+
+@media (min-width: 768px) {
+  .courses-container {
+    margin: 1em;
+  }
+}
+
+.search-filter {
+  display: flex;
+  justify-content: space-around;
+}

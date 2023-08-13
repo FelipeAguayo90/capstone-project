@@ -8,9 +8,11 @@ import {
   closeMenu,
   toggleMenu,
 } from '../../features/navbar/navbarSlice';
+import { openDash } from '../../features/tabBar/tabBarSlice';
 
 const Navbar = () => {
   const { user } = useSelector((store) => store.user);
+  const { isDash } = useSelector((store) => store.tabBar);
   const { isMenuOpen } = useSelector((store) => store.navbar);
   const dispatch = useDispatch();
 
@@ -18,21 +20,61 @@ const Navbar = () => {
     <header className="header-fixed">
       <nav className={`nav-container ${isMenuOpen ? 'show' : ''}`}>
         <div className="navbar">
-          <div>
+          <div className="logo">
             <p>MTEC</p>
           </div>
-          <div>
+          <ul className="large">
+            <li>
+              <NavLink to="/">Home</NavLink>
+            </li>
+            <li>
+              <NavLink to="/courses">Courses</NavLink>
+            </li>
+
+            {!user.user ? (
+              <li>
+                <NavLink to="/login">Login</NavLink>
+              </li>
+            ) : (
+              <>
+                {user.is_admin ? (
+                  <li>
+                    <NavLink
+                      onClick={() => {
+                        dispatch(openDash());
+                      }}
+                      to="admin/dashboard"
+                    >
+                      Dashboard
+                    </NavLink>
+                  </li>
+                ) : (
+                  <li>
+                    <NavLink
+                      onClick={() => {
+                        dispatch(openDash());
+                      }}
+                      to="student/dashboard"
+                    >
+                      Dashboard
+                    </NavLink>
+                  </li>
+                )}
+                <li
+                  onClick={() => {
+                    dispatch(openModal());
+                  }}
+                >
+                  Logout
+                </li>
+              </>
+            )}
+          </ul>
+          <div className="small">
             {user.user ? (
               <h4>{user.first_name}</h4>
             ) : (
-              <NavLink
-                onClick={() => {
-                  dispatch(toggleMenu(isMenuOpen));
-                }}
-                to="/register"
-              >
-                enroll today
-              </NavLink>
+              <NavLink to="/register">enroll today</NavLink>
             )}
 
             <HiBars4
@@ -42,13 +84,26 @@ const Navbar = () => {
               }}
             />
           </div>
+          <div className="large">
+            {user.user ? (
+              <>
+                <RxAvatar />
+
+                <h4>{user.first_name}</h4>
+              </>
+            ) : (
+              <NavLink to="/register">enroll today</NavLink>
+            )}
+          </div>
         </div>
 
         <div className={`drop-down ${isMenuOpen ? 'show' : ''}`}>
           <ul className={`nav-links ${isMenuOpen ? 'show' : ''} `}>
-            <li>
-              <RxAvatar />
-            </li>
+            {user.user ? (
+              <li>
+                <RxAvatar />
+              </li>
+            ) : null}
             <li>
               <NavLink
                 to="/"
@@ -82,19 +137,41 @@ const Navbar = () => {
                 </NavLink>
               </li>
             ) : (
-              <li
-                onClick={() => {
-                  dispatch(openModal());
-                }}
-              >
-                <NavLink
+              <>
+                {user.is_admin ? (
+                  <li>
+                    <NavLink
+                      to="admin/dashboard"
+                      onClick={() => {
+                        dispatch(toggleMenu(isMenuOpen));
+                        dispatch(openDash());
+                      }}
+                    >
+                      Dashboard
+                    </NavLink>
+                  </li>
+                ) : (
+                  <li>
+                    <NavLink
+                      to="student/dashboard"
+                      onClick={() => {
+                        dispatch(toggleMenu(isMenuOpen));
+                        dispatch(openDash());
+                      }}
+                    >
+                      Dashboard
+                    </NavLink>
+                  </li>
+                )}
+                <li
                   onClick={() => {
+                    dispatch(openModal());
                     dispatch(toggleMenu(isMenuOpen));
                   }}
                 >
                   Logout
-                </NavLink>
-              </li>
+                </li>
+              </>
             )}
           </ul>
         </div>

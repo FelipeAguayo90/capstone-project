@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import {
   openDash,
   openCourses,
@@ -7,10 +7,10 @@ import {
 } from '../../features/tabBar/tabBarSlice';
 
 const TabBar = () => {
+  const navigate = useNavigate();
   const { is_admin } = useSelector((store) => store.user);
   const { isDash, isCourses, isAccount } = useSelector((store) => store.tabBar);
   const dispatch = useDispatch();
-  console.log(isDash);
 
   return (
     <section className="tab-container">

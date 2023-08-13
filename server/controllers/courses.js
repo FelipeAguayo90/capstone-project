@@ -1,7 +1,7 @@
 const asyncWrapper = require('../middlewear/async');
 const pool = require('../models/pool');
 
-const getCourses = asyncWrapper(async (req, res) => {
+const getCarouselCourses = asyncWrapper(async (req, res) => {
   const text =
     'SELECT * FROM courses WHERE course_title IN ($1, $2, $3, $4, $5)';
   const values = [
@@ -15,7 +15,13 @@ const getCourses = asyncWrapper(async (req, res) => {
   res.json(results.rows);
 });
 
-module.exports = getCourses;
+const getCourses = asyncWrapper(async (req, res) => {
+  const text = 'SELECT * FROM courses';
+  const results = await pool.query(text);
+  res.json(results.rows);
+});
+
+module.exports = { getCarouselCourses, getCourses };
 
 // SELECT *
 // FROM courses

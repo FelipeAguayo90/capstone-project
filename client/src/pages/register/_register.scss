@@ -10,4 +10,42 @@ section.form-container {
     background-color: $danger-color;
     border: solid 1px salmon;
   }
+
+  ul {
+    background-color: $info-color;
+    margin: 0.5em;
+    border: solid 1px $text-info;
+  }
+
+  ul li {
+    padding: 0.5em;
+    margin-left: 1.5em;
+    color: $text-info;
+    font-size: 0.8rem;
+    text-transform: none;
+  }
+
+  ul.warning {
+    background-color: $danger-color;
+    border: solid 1px $danger-border;
+    li {
+      background-color: $danger-color;
+      color: $danger-font;
+      text-transform: none;
+    }
+  }
 }
+
+// ul {
+//     background-color: $danger-color;
+//     margin: 0.5em;
+//     border: solid 1px $danger-border;
+//   }
+
+//   ul li {
+//     padding: 0.5em;
+//     margin-left: 1.5em;
+//     background-color: $danger-color;
+//     color: $danger-font;
+//     font-size: 0.8rem;
+//   }

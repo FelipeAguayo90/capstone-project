@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-const url = 'api/v1/courses';
+const url = 'api/v1/courses/carousel';
 
 const initialState = {
   carouselItems: [],
@@ -22,7 +22,7 @@ const carouselSlice = createSlice({
   initialState,
   reducers: {
     nextSlide: (state) => {
-      console.log(state.index);
+      console.log(state.carouselItems);
       if (state.index === state.carouselItems.length - 1) {
         state.index = 0;
         return;
@@ -30,7 +30,6 @@ const carouselSlice = createSlice({
       state.index = state.index + 1;
     },
     prevSlide: (state) => {
-      console.log(state.index);
       if (state.index === 0) {
         state.index = state.carouselItems.length - 1;
         return;
@@ -46,6 +45,7 @@ const carouselSlice = createSlice({
       .addCase(getCarouselItms.fulfilled, (state, action) => {
         state.isLoading = false;
         state.carouselItems = action.payload;
+        console.log(state.carouselItems);
       })
       .addCase(getCarouselItms.rejected, (state) => {
         state.isLoading = false;

@@ -12,6 +12,7 @@ const initialState = {
     user: false,
   },
   isLoading: true,
+  invalCredentials: false,
 };
 
 export const getUser = createAsyncThunk('user/getUser', (payload, thunkAPI) => {
@@ -34,8 +35,12 @@ const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    loginSuccess: (state, action) => {
+    setUser: (state, action) => {
+      state.isLoading = false;
+
+      console.log(action.payload);
       state.user = action.payload;
+      localStorage.setItem('Authorization', action.payload.token);
     },
     logout: (state) => {
       state.user = {
@@ -56,6 +61,14 @@ const userSlice = createSlice({
       })
       .addCase(getUser.fulfilled, (state, action) => {
         state.isLoading = false;
+        console.log(action.payload);
+        if (
+          action.payload.msg ===
+          'The user name or password provided is incorrect.'
+        ) {
+          state.invalCredentials = true;
+          return;
+        }
         const {
           email,
           first_name,
@@ -74,6 +87,6 @@ const userSlice = createSlice({
   },
 });
 
-export const { loginSuccess, logout } = userSlice.actions;
+export const { setUser, logout } = userSlice.actions;
 
 export default userSlice.reducer;

@@ -25,8 +25,18 @@ const register = asyncWrapper(async (req, res) => {
       algorithm: 'HS256',
       expiresIn: '1d',
     });
-
-    res.status(200).json({ msg: 'user created', token, results });
+    const { email, first_name, is_admin, last_login, user_id } =
+      results.rows[0];
+    res.status(200).json({
+      msg: 'Logged in successfully',
+      token: `Bearer ${token}`,
+      first_name,
+      is_admin,
+      last_login,
+      user_id,
+      email,
+      user: true,
+    });
   });
 });
 
