@@ -2,6 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   isOpen: false,
+  isDltOpen: false,
+  userId: null,
 };
 
 const logoutModalSlice = createSlice({
@@ -14,9 +16,20 @@ const logoutModalSlice = createSlice({
     closeModal: (state) => {
       state.isOpen = false;
     },
+    openDltModal: (state) => {
+      state.isDltOpen = true;
+    },
+    closeDltModal: (state) => {
+      state.isDltOpen = false;
+    },
+    setUsrId: (state, action) => {
+      state.userId = action.payload;
+      console.log(state.userId);
+    },
   },
 });
 
-export const { openModal, closeModal } = logoutModalSlice.actions;
+export const { openModal, closeModal, openDltModal, closeDltModal, setUsrId } =
+  logoutModalSlice.actions;
 
 export default logoutModalSlice.reducer;

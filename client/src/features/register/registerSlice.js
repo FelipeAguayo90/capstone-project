@@ -15,8 +15,19 @@ const initialState = {
 export const registerUser = createAsyncThunk(
   'register/newUser',
   (payload, thunkAPI) => {
-    const { username, email, password, firstName, lastName } =
-      thunkAPI.getState().formsData.registerForm;
+    const {
+      username,
+      email,
+      password,
+      firstName,
+      lastName,
+      city,
+      country,
+      state,
+      street,
+      telephone,
+      zipCode,
+    } = thunkAPI.getState().formsData.registerForm;
 
     const isAdmin = false;
     return fetch(url, {
@@ -31,6 +42,12 @@ export const registerUser = createAsyncThunk(
         firstName: firstName,
         lastName: lastName,
         isAdmin: isAdmin,
+        city: city,
+        country: country,
+        state: state,
+        street: street,
+        telephone: telephone,
+        zipCode: zipCode,
       }),
     })
       .then((resp) => resp.json())

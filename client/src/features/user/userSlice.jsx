@@ -10,10 +10,29 @@ const initialState = {
     last_login: null,
     user_id: null,
     user: false,
+    token: null,
   },
   isLoading: true,
   invalCredentials: false,
 };
+
+const url2 = 'http://localhost:5173/api/v1/verify-token';
+export const isUser = createAsyncThunk('user/isUser', async () => {
+  console.log('hello');
+  const storedToken = localStorage.getItem('Authorization');
+  console.log(storedToken);
+  try {
+    const resp = await fetch(url2, {
+      method: 'GET',
+      headers: {
+        Authorization: `${storedToken}`,
+      },
+    });
+    return resp.json();
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 export const getUser = createAsyncThunk('user/getUser', (payload, thunkAPI) => {
   const { username, password } = thunkAPI.getState().formsData.loginForm;
@@ -61,7 +80,6 @@ const userSlice = createSlice({
       })
       .addCase(getUser.fulfilled, (state, action) => {
         state.isLoading = false;
-        console.log(action.payload);
         if (
           action.payload.msg ===
           'The user name or password provided is incorrect.'
@@ -79,9 +97,48 @@ const userSlice = createSlice({
           token,
         } = action.payload;
         localStorage.setItem('Authorization', token);
-        state.user = { email, first_name, is_admin, last_login, user_id, user };
+        state.user = {
+          email,
+          first_name,
+          is_admin,
+          last_login,
+          user_id,
+          user,
+          token,
+        };
       })
       .addCase(getUser.rejected, (state) => {
+        state.isLoading = false;
+      })
+      .addCase(isUser.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(isUser.fulfilled, (state, action) => {
+        state.isLoading = false;
+        console.log(typeof action.payload);
+        const uSer = true;
+        if (
+          action.payload.msg ===
+          'The user name or password provided is incorrect.'
+        ) {
+          state.invalCredentials = true;
+          return;
+        }
+        const { email, first_name, is_admin, last_login, user_id } =
+          action.payload[0];
+        // localStorage.setItem('Authorization', token);
+        state.user = {
+          ...state.user,
+          email,
+          first_name,
+          is_admin,
+          last_login,
+          user_id,
+          user: uSer,
+          // token,
+        };
+      })
+      .addCase(isUser.rejected, (state) => {
         state.isLoading = false;
       });
   },

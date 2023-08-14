@@ -1,0 +1,83 @@
+.dash-container {
+  @include flexCenter(center, column, center);
+  margin-top: 0.5em;
+  //   margin: 2em;
+
+  section {
+    width: 100%;
+  }
+  h3 {
+    margin: 0 1em;
+  }
+
+  input {
+    text-indent: 5px;
+    height: 2em;
+    border: $border-radius;
+    border: solid 1px $border-color;
+  }
+
+  button {
+    margin-left: 1em;
+  }
+
+  th:last-of-type {
+    text-align: center;
+  }
+
+  .empty {
+    @include flexCenter(center, row, center);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.student-course-bar {
+  padding: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $secondary-color;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: $border-radius;
+}
+
+.empty,
+.courses-sec,
+.student-sec {
+  margin: 1em 0;
+  width: 100%;
+  overflow-x: auto;
+}
+
+@media (min-width: 768px) {
+  .dash-container {
+    margin: 2em;
+
+    section {
+      width: 100%;
+    }
+    h3 {
+      margin: 0 1em;
+    }
+
+    input {
+      text-indent: 5px;
+      height: 2em;
+    }
+
+    button {
+      margin-left: 1em;
+    }
+  }
+  .student-course-bar {
+    padding: 1em;
+  }
+
+  .student-sec {
+    margin: 1em 0;
+    width: 100%;
+  }
+}
+
+@media (min-width: 1024px) {
+}

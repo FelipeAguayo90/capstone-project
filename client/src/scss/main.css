@@ -24,14 +24,46 @@
 .form-control label {
   padding: 0.5em 0;
 }
-.form-control input[type=text],
-.form-control input[type=password],
-.form-control input[type=email] {
+.form-control input {
   height: 2em;
   border: 0.5em;
   border: solid 1px #e5e5e5;
 }
 
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+table th {
+  font-size: 0.8rem;
+}
+
+table th,
+table td {
+  padding: 0.2em;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+table th {
+  background-color: #f2f2f2;
+}
+
+table tr:hover {
+  background-color: #f5f5f5;
+}
+
+@media (min-width: 768px) {
+  table th {
+    font-size: 0.8rem;
+  }
+  table th,
+  table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+}
 /* ---- buttons ---- */
 .button-3 {
   -webkit-appearance: none;
@@ -62,20 +94,50 @@
   margin: 0.5em auto;
 }
 
-.button-3:focus:not(:focus-visible):not(.focus-visible) {
+.button-2 {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: #023e7d;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 0.5em;
+  box-shadow: rgba(27, 31, 35, 0.1) 0 1px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-weight: 600;
+  padding: 0.5em 2em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  -moz-user-select: none;
+       user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.button-3:focus:not(:focus-visible):not(.focus-visible),
+.button-2:focus:not(:focus-visible):not(.focus-visible) {
   box-shadow: none;
   outline: none;
 }
 
+.button-2:hover,
 .button-3:hover {
   background-color: #0353a4;
 }
 
+.button-2:focus,
 .button-3:focus {
   box-shadow: rgba(46, 164, 79, 0.4) 0 0 0 3px;
   outline: none;
 }
 
+.button-2:disabled,
 .button-3:disabled {
   background-color: #979dac;
   border-color: rgba(27, 31, 35, 0.1);
@@ -83,6 +145,7 @@
   cursor: default;
 }
 
+.button-2:active,
 .button-3:active {
   background-color: #001845;
   box-shadow: rgba(20, 70, 32, 0.2) 0 1px 0 inset;
@@ -97,7 +160,6 @@
 
 html {
   font-size: 16px;
-  background-color: white;
 }
 
 body {
@@ -110,7 +172,6 @@ a {
 }
 
 #root {
-  position: relative;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -118,6 +179,9 @@ a {
 }
 
 @media (min-width: 768px) {
+  #root {
+    margin-top: 4.3em;
+  }
   body {
     width: 100%;
     margin: 0 auto;
@@ -131,7 +195,7 @@ a {
 }
 @font-face {
   font-family: "Roboto";
-  src: url("../assets/fonts/Roboto/Roboto-Bold.ttf") format("ttf"), url("../assets/fonts/Roboto/Roboto-Light.ttf") format("ttf"), url("../assets/fonts/Roboto/Roboto-Regular.ttf") format("ttf"), url("../assets/fonts/Roboto/Roboto-Medium.ttf") format("ttf");
+  src: url("../assets/fonts/Roboto/Roboto-Bold.ttf") format("ttf"), url("../assets/fonts/Roboto/Roboto-Light.ttf") format("ttf"), url("../assets/fonts/Roboto/Roboto-Regular.ttf") format("ttf"), url("../assets/fonts/Roboto/Roboto-Medium.ttf") format("ttf"), url("../assets/fonts/Roboto/Roboto-Black.ttf") format("ttf"), url("../assets/fonts/Roboto/Roboto-BlackItalic.ttf") format("ttf"), url("../assets/fonts/Roboto/Roboto-BoldItalic.ttf") format("ttf"), url("../assets/fonts/Roboto/Roboto-Italic.ttf") format("ttf"), url("../assets/fonts/Roboto/Roboto-LightItalic.ttf") format("ttf"), url("../assets/fonts/Roboto/Roboto-MediumItalic.ttf") format("ttf"), url("../assets/fonts/Roboto/Roboto-Thin.ttf") format("ttf"), url("../assets/fonts/Roboto/Roboto-ThinItalic.ttf") format("ttf");
 }
 body {
   font-family: "Roboto", sans-serif;
@@ -259,8 +323,6 @@ h3 {
 
 @media (min-width: 768px) {
   .nav-container {
-    width: 100%;
-    position: relative;
     z-index: 3;
     height: -moz-fit-content;
     height: fit-content;
@@ -270,6 +332,10 @@ h3 {
   }
 }
 @media (min-width: 1024px) {
+  .nav-container {
+    width: 80%;
+    left: 10%;
+  }
   .nav-container .large {
     display: flex;
     list-style: none;
@@ -576,12 +642,6 @@ section.form-container {
   flex-direction: column;
   margin-top: 5.5rem;
 }
-section.form-container small {
-  padding: 0.3em;
-  border-radius: 0.5em;
-  background-color: #ebd0cf;
-  border: solid 1px salmon;
-}
 section.form-container ul {
   background-color: #f7edd2;
   margin: 0.5em;
@@ -604,6 +664,23 @@ section.form-container ul.warning li {
   text-transform: none;
 }
 
+@media (min-width: 768px) {
+  .form-group {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .form-group .form-control {
+    width: 50%;
+  }
+  .form-group .form-control ul {
+    width: 200%;
+  }
+}
+@media (min-width: 1024px) {
+  .form-container form {
+    width: 50%;
+  }
+}
 .courses-container {
   height: 100%;
   margin-top: 5.5rem;
@@ -685,6 +762,130 @@ div.img-card {
 }
 div.img-card img {
   width: 100%;
+}
+
+.dash-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 0.5em;
+}
+.dash-container section {
+  width: 100%;
+}
+.dash-container h3 {
+  margin: 0 1em;
+}
+.dash-container input {
+  text-indent: 5px;
+  height: 2em;
+  border: 0.5em;
+  border: solid 1px #e5e5e5;
+}
+.dash-container button {
+  margin-left: 1em;
+}
+.dash-container th:last-of-type {
+  text-align: center;
+}
+.dash-container .empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.student-course-bar {
+  padding: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #3e92cc;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 0.5em;
+}
+
+.empty,
+.courses-sec,
+.student-sec {
+  margin: 1em 0;
+  width: 100%;
+  overflow-x: auto;
+}
+
+@media (min-width: 768px) {
+  .dash-container {
+    margin: 2em;
+  }
+  .dash-container section {
+    width: 100%;
+  }
+  .dash-container h3 {
+    margin: 0 1em;
+  }
+  .dash-container input {
+    text-indent: 5px;
+    height: 2em;
+  }
+  .dash-container button {
+    margin-left: 1em;
+  }
+  .student-course-bar {
+    padding: 1em;
+  }
+  .student-sec {
+    margin: 1em 0;
+    width: 100%;
+  }
+}
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+}
+
+.modal {
+  background-color: white;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+.modal h4 {
+  padding: 10px;
+}
+.modal button {
+  width: 100px;
+  padding: 5px 10px;
+}
+.modal div {
+  display: flex;
+  justify-content: space-around;
+}
+
+.close-button {
+  background-color: #ebd0cf;
+  border-radius: 0.5em;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.open-button {
+  background-color: #2f3632;
+  border-radius: 0.5em;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
 }
 
 .active {

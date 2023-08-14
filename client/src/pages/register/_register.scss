@@ -3,13 +3,13 @@ section.form-container {
   @include flexCenter(center, column, start);
   margin-top: 5.5rem;
 
-  small {
-    // margin: 0.3em;
-    padding: 0.3em;
-    border-radius: $border-radius;
-    background-color: $danger-color;
-    border: solid 1px salmon;
-  }
+  // small {
+  //   // margin: 0.3em;
+  //   padding: 0.3em;
+  //   border-radius: $border-radius;
+  //   background-color: $danger-color;
+  //   border: solid 1px salmon;
+  // }
 
   ul {
     background-color: $info-color;
@@ -36,16 +36,25 @@ section.form-container {
   }
 }
 
-// ul {
-//     background-color: $danger-color;
-//     margin: 0.5em;
-//     border: solid 1px $danger-border;
-//   }
+@media (min-width: 768px) {
+  .form-group {
+    display: flex;
+    flex-wrap: wrap;
 
-//   ul li {
-//     padding: 0.5em;
-//     margin-left: 1.5em;
-//     background-color: $danger-color;
-//     color: $danger-font;
-//     font-size: 0.8rem;
-//   }
+    .form-control {
+      width: 50%;
+
+      ul {
+        width: 200%;
+      }
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .form-container {
+    form {
+      width: 50%;
+    }
+  }
+}

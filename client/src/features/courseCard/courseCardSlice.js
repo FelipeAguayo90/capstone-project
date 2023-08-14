@@ -23,7 +23,6 @@ const courseCrdSlice = createSlice({
     search: (state, action) => {
       const query = action.payload;
       state.courseItems = state.courseItems.filter((course) => {
-        console.log(state.courseItems);
         if (course.course_title.toLowerCase().includes(query.toLowerCase())) {
           return course;
         }

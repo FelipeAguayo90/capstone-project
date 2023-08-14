@@ -15,6 +15,7 @@ const Navbar = () => {
   const { isDash } = useSelector((store) => store.tabBar);
   const { isMenuOpen } = useSelector((store) => store.navbar);
   const dispatch = useDispatch();
+  console.log(user);
 
   return (
     <header className="header-fixed">
@@ -31,7 +32,7 @@ const Navbar = () => {
               <NavLink to="/courses">Courses</NavLink>
             </li>
 
-            {!user.user ? (
+            {!user.first_name ? (
               <li>
                 <NavLink to="/login">Login</NavLink>
               </li>
@@ -71,7 +72,7 @@ const Navbar = () => {
             )}
           </ul>
           <div className="small">
-            {user.user ? (
+            {user.first_name ? (
               <h4>{user.first_name}</h4>
             ) : (
               <NavLink to="/register">enroll today</NavLink>

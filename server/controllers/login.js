@@ -27,6 +27,12 @@ const login = asyncWrapper(async (req, res) => {
         .status(500)
         .json({ msg: 'The user name or password provided is incorrect.' });
     }
+    const values2 = [username];
+    console.log(values2);
+    const text2 =
+      'UPDATE account SET last_login = CURRENT_TIMESTAMP WHERE username = $1';
+
+    pool.query(text2, values2);
     const token = jwt.sign({ username: username }, process.env.JWT_SECRET, {
       algorithm: 'HS256',
       expiresIn: '1d',

@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const user = require('./user');
 const logger = require('./logger');
 const register = require('./register');
+const admin = require('./admin');
 const dashboard = require('./stdntDashboard');
 const passport = require('passport');
 const login = require('./login');
@@ -22,6 +24,14 @@ router.use('/courses', courses);
 router.use('/login', login);
 
 router.use('/register', register);
+
+router.use(
+  '/verify-token',
+  passport.authenticate('jwt', { session: false }),
+  user
+);
+
+router.use('/admin', passport.authenticate('jwt', { session: false }), admin);
 
 router.use(
   '/student/dashboard',

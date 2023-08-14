@@ -7,6 +7,8 @@ import formsDataReducer from './features/formsData/formsDataSlice';
 import carouselReducer from './features/carousel/carouselSlice';
 import registerReducer from './features/register/registerSlice';
 import coursesReducer from './features/courseCard/courseCardSlice';
+import adminReducer from './features/admin/adminSlice';
+import studentReducer from './features/student/studentSlice';
 
 export const store = configureStore({
   reducer: {
@@ -18,5 +20,7 @@ export const store = configureStore({
     carousel: carouselReducer,
     register: registerReducer,
     courses: coursesReducer,
+    admin: adminReducer,
+    student: studentReducer,
   },
 });
