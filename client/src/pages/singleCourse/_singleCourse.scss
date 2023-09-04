@@ -5,7 +5,7 @@
     border-radius: $border-radius;
     background-color: $white-color;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    //   margin-top: 5.5rem;
+
     margin: 5.5rem auto;
     @include flexCenter(center, column, center);
 
@@ -27,7 +27,6 @@
     p.description {
       text-transform: none;
       line-height: 1.3em;
-      // margin-top: 1.5em;
     }
     a {
       color: black;
@@ -62,7 +61,7 @@
   border-radius: $border-radius;
   background-color: $white-color;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  //   margin-top: 5.5rem;
+
   margin: 5.5rem auto;
   @include flexCenter(center, column, center);
 
@@ -84,7 +83,6 @@
   p.description {
     text-transform: none;
     line-height: 1.3em;
-    // margin-top: 1.5em;
   }
   a {
     color: black;
