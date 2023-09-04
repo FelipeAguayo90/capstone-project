@@ -9,11 +9,7 @@ const CourseCard = ({ course }) => {
     <article className="card">
       <div className="img-card">
         <img
-          src={
-            course.img_address === img1
-              ? img1
-              : '../../../dist/assets/images/advanced-algorithms.png'
-          }
+          src={course.img_address === img1 ? img1 : null}
           alt={course.course_title}
         />
       </div>
