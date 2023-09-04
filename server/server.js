@@ -9,6 +9,10 @@ const app = express();
 // Have Node serve the files for our built React app
 app.use(express.static(path.resolve(__dirname, '../client/dist')));
 
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
+});
+
 app.use(express.urlencoded({ extended: false }));
 
 app.use(express.json());
