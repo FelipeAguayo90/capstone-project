@@ -1,20 +1,12 @@
-import Dashboard from '../Dashboard/Dashboard';
+import { useSelector } from 'react-redux';
 
-function Admin() {
-  // const { isLoading } = useSelector((store) => store.user);
-
-  // if (isLoading) {
-  //   return (
-  //     <div className="spinner-container">
-  //       <ImSpinner6 className="spinner" />
-  //     </div>
-  //   );
-  // }
-
+const Admin = () => {
+  const { user } = useSelector((store) => store.user);
+  console.log(user);
   return (
-    <>
-      <Dashboard />
-    </>
+    <section>
+      <h1></h1>
+    </section>
   );
-}
+};
 export default Admin;

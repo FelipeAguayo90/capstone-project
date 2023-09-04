@@ -45,7 +45,6 @@ const carouselSlice = createSlice({
       .addCase(getCarouselItms.fulfilled, (state, action) => {
         state.isLoading = false;
         state.carouselItems = action.payload;
-        console.log(state.carouselItems);
       })
       .addCase(getCarouselItms.rejected, (state) => {
         state.isLoading = false;

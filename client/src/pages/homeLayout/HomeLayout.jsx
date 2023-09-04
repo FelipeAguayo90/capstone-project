@@ -4,33 +4,35 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import { DltStdModal } from '../../components/dltStdModal';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { isUser } from '../../features/user/userSlice';
+import { isUser, getProfilePhoto } from '../../features/user/userSlice';
 import { getCourses } from '../../features/courseCard/courseCardSlice';
 
 const HomeLayout = () => {
   const navigate = useNavigate();
-  const { is_admin, user } = useSelector((store) => store.user.user);
+  const { user } = useSelector((store) => store.user);
   const dispatch = useDispatch();
-  console.log(is_admin);
   useEffect(() => {
     dispatch(getCourses());
+    dispatch(getProfilePhoto());
   }, [user]);
 
   useEffect(() => {
-    dispatch(isUser()).then(() => {
-      if (is_admin) {
+    dispatch(getProfilePhoto());
+    dispatch(isUser()).then((res) => {
+      const isAdmin = res.payload.is_admin;
+      if (isAdmin) {
         return navigate('/admin/dashboard');
       }
       return navigate('/student/dashboard');
     });
   }, []);
   return (
-    <>
+    <div className="home-layout">
       <DltStdModal />
       <LogoutModal />
       <Navbar />
       <Outlet />
-    </>
+    </div>
   );
 };
 export default HomeLayout;

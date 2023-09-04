@@ -63,24 +63,14 @@ const Register = () => {
 
     try {
       const data = await dispatch(registerUser());
-      const { email, first_name, is_admin, last_login, user_id, user, token } =
-        data.payload;
-      dispatch(
-        setUser({
-          email,
-          first_name,
-          is_admin,
-          last_login,
-          user_id,
-          user,
-          token,
-        })
-      );
+      const { is_admin } = data.payload.user;
+      console.log(data.payload);
+      dispatch(setUser(data.payload));
       if (data.payload.msg.name !== 'error') {
         if (is_admin) {
-          return navigate('/admin/');
+          return navigate('/admin/dashboard');
         }
-        return navigate('/student/');
+        return navigate('/student/dashboard');
       }
     } catch (error) {
       console.log('something went wrong');
@@ -165,7 +155,7 @@ const Register = () => {
               onChange={handleChange}
             />
             {isFocused && (
-              <ul>
+              <ul className="guidelines">
                 <li>Password must be at least 8 characters long.</li>
                 <li>Password must have one uppercase letter.</li>
                 <li>Password must have one special character.</li>

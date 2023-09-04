@@ -1,15 +1,17 @@
+import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { updateAccntInfo } from '../../features/formsData/formsDataSlice';
-import { FileUpload } from '../../components/uploadfile';
 import { updateUser } from '../../features/user/userSlice';
+import { getStudents, displayItems } from '../../features/admin/adminSlice';
 
-const Account = () => {
+const UpdateUser = () => {
   const dispatch = useDispatch();
-  const { user } = useSelector((store) => store.user);
-  const [data, setData] = useState(user);
-
+  const navigate = useNavigate();
+  const { userId } = useParams();
+  const accounts = useSelector((store) => store.admin.students);
+  const account = accounts.find((account) => account.user_id == userId);
+  const [data, setData] = useState(account);
   const [isFocused, setIsFocused] = useState(false);
   const {
     isShort,
@@ -31,15 +33,23 @@ const Account = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = await dispatch(updateUser(user.user_id));
+    const data = await dispatch(updateUser(account.user_id)).then(() => {
+      dispatch(getStudents()).then(() => {
+        dispatch(displayItems());
+        navigate('/admin/dashboard');
+      });
+    });
+    console.log(data);
   };
 
   const handleChange = async (event) => {
+    console.log(event.target.value);
     const { name, value } = event.target;
     setData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
+
     dispatch(updateAccntInfo({ name, value }));
   };
 
@@ -51,9 +61,9 @@ const Account = () => {
           handleSubmit(e);
         }}
       >
-        <h2>account info</h2>
+        <h2>edit user</h2>
         <hr></hr>
-        <FileUpload />
+
         <div className="form-group">
           <div className="form-control">
             <label htmlFor="username">Username:</label>
@@ -216,4 +226,4 @@ const Account = () => {
     </section>
   );
 };
-export default Account;
+export default UpdateUser;

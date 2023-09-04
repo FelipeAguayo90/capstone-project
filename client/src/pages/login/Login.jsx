@@ -23,8 +23,9 @@ const Login = () => {
           try {
             e.preventDefault();
             const data = await dispatch(getUser());
-            console.log(data);
-            const { is_admin } = data.payload;
+
+            const { is_admin } = data.payload.user;
+
             if (is_admin) {
               return navigate('/admin/dashboard');
             }

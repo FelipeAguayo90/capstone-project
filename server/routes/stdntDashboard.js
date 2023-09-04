@@ -1,7 +1,7 @@
 const express = require('express');
-const stdntDashboard = require('../controllers/stdntDashboard');
+const stdClasses = require('../controllers/stdntDashboard');
 const router = express.Router();
 
-router.get('/', stdntDashboard);
+router.get('/:stdId/class', stdClasses);
 
 module.exports = router;

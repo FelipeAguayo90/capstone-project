@@ -1,0 +1,12 @@
+.profile-photo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  img {
+    height: 4em;
+    width: 4em;
+    margin: 0.5em;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+}

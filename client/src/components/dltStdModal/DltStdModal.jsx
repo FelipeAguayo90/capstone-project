@@ -1,14 +1,10 @@
 import { useSelector, useDispatch } from 'react-redux';
-// import { useNavigate } from 'react-router-dom';
 import { closeDltModal } from '../../features/logoutModal/logoutModalSlice';
 import { dltStudent, getStudents } from '../../features/admin/adminSlice';
 
 const DltStdModal = ({ children }) => {
   const dispatch = useDispatch();
   const { isDltOpen, userId } = useSelector((store) => store.logoutModal);
-  // const navigate = useNavigate();
-
-  console.log(userId);
 
   if (!isDltOpen) return null;
 
@@ -22,7 +18,6 @@ const DltStdModal = ({ children }) => {
             onClick={() => {
               dispatch(dltStudent(userId))
                 .then(() => {
-                  console.log('success');
                   dispatch(getStudents());
                 })
                 .catch((error) => {

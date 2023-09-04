@@ -8,6 +8,7 @@ const dashboard = require('./stdntDashboard');
 const passport = require('passport');
 const login = require('./login');
 const courses = require('./courses');
+const s3bucket = require('./s3bucket');
 
 router.use(express.urlencoded({ extended: false }));
 
@@ -25,16 +26,14 @@ router.use('/login', login);
 
 router.use('/register', register);
 
-router.use(
-  '/verify-token',
-  passport.authenticate('jwt', { session: false }),
-  user
-);
+router.use('/s3', s3bucket);
+
+router.use('/user', passport.authenticate('jwt', { session: false }), user);
 
 router.use('/admin', passport.authenticate('jwt', { session: false }), admin);
 
 router.use(
-  '/student/dashboard',
+  '/student',
   passport.authenticate('jwt', { session: false }),
   dashboard
 );

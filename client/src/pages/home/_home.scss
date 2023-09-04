@@ -1,14 +1,20 @@
 .home-container {
-  margin-top: 5.5rem;
-  @include flexCenter(center, column, start);
-  height: 100%;
+  @include flexCenter(center, column, center);
+  height: calc(100% - 70px);
   font-family: 'Roboto', sans-serif;
   font-weight: medium;
   font-size: larger;
+
+  h1 {
+    margin: 0.5em;
+  }
 }
 
 @media (min-width: 768px) {
   .home-container {
-    margin: 1em;
+    // padding-top: 5.5em;
   }
+  // .home-container {
+  //   margin: 1em;
+  // }
 }

@@ -15,7 +15,6 @@ const Navbar = () => {
   const { isDash } = useSelector((store) => store.tabBar);
   const { isMenuOpen } = useSelector((store) => store.navbar);
   const dispatch = useDispatch();
-  console.log(user);
 
   return (
     <header className="header-fixed">
@@ -25,14 +24,25 @@ const Navbar = () => {
             <p>MTEC</p>
           </div>
           <ul className="large">
-            <li>
-              <NavLink to="/">Home</NavLink>
-            </li>
-            <li>
-              <NavLink to="/courses">Courses</NavLink>
-            </li>
+            {user.user || (
+              <li>
+                <NavLink to="/">Home</NavLink>
+              </li>
+            )}
 
-            {!user.first_name ? (
+            {user.user || (
+              <li>
+                <NavLink to="/courses">Courses</NavLink>
+              </li>
+            )}
+
+            {user.user || (
+              <li>
+                <NavLink to="/login">Login</NavLink>
+              </li>
+            )}
+
+            {/* {!user.first_name ? (
               <li>
                 <NavLink to="/login">Login</NavLink>
               </li>
@@ -61,15 +71,8 @@ const Navbar = () => {
                     </NavLink>
                   </li>
                 )}
-                <li
-                  onClick={() => {
-                    dispatch(openModal());
-                  }}
-                >
-                  Logout
-                </li>
               </>
-            )}
+            )} */}
           </ul>
           <div className="small">
             {user.first_name ? (
@@ -87,11 +90,7 @@ const Navbar = () => {
           </div>
           <div className="large">
             {user.user ? (
-              <>
-                <RxAvatar />
-
-                <h4>{user.first_name}</h4>
-              </>
+              <p>hello {user.first_name}</p>
             ) : (
               <NavLink to="/register">enroll today</NavLink>
             )}
@@ -115,16 +114,18 @@ const Navbar = () => {
                 Home
               </NavLink>
             </li>
-            <li>
-              <NavLink
-                to="/courses"
-                onClick={() => {
-                  dispatch(toggleMenu(isMenuOpen));
-                }}
-              >
-                Courses
-              </NavLink>
-            </li>
+            {user.user || (
+              <li>
+                <NavLink
+                  to="/courses"
+                  onClick={() => {
+                    dispatch(toggleMenu(isMenuOpen));
+                  }}
+                >
+                  Courses
+                </NavLink>
+              </li>
+            )}
 
             {!user.user ? (
               <li>
@@ -139,7 +140,12 @@ const Navbar = () => {
               </li>
             ) : (
               <>
-                {user.is_admin ? (
+                {user.user || (
+                  <li>
+                    <NavLink to="/login">Login</NavLink>
+                  </li>
+                )}
+                {/* {user.is_admin ? (
                   <li>
                     <NavLink
                       to="admin/dashboard"
@@ -163,15 +169,7 @@ const Navbar = () => {
                       Dashboard
                     </NavLink>
                   </li>
-                )}
-                <li
-                  onClick={() => {
-                    dispatch(openModal());
-                    dispatch(toggleMenu(isMenuOpen));
-                  }}
-                >
-                  Logout
-                </li>
+                )} */}
               </>
             )}
           </ul>

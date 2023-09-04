@@ -12,15 +12,15 @@ section.form-container {
   // }
 
   ul {
-    background-color: $info-color;
+    background-color: #d7ebce;
     margin: 0.5em;
-    border: solid 1px $text-info;
+    border: solid 1px #3b763d;
   }
 
   ul li {
     padding: 0.5em;
     margin-left: 1.5em;
-    color: $text-info;
+    color: #3b763d;
     font-size: 0.8rem;
     text-transform: none;
   }
@@ -44,7 +44,7 @@ section.form-container {
     .form-control {
       width: 50%;
 
-      ul {
+      ul.guidelines {
         width: 200%;
       }
     }

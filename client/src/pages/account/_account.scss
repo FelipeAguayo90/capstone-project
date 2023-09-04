@@ -1,0 +1,34 @@
+section.account-container {
+  padding: 2em;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border: solid 1px $neutral-blue;
+  border-radius: $border-radius;
+
+  overflow-y: scroll;
+  input {
+    border-radius: 0;
+  }
+
+  .form-group div.btn-container {
+    display: flex;
+    justify-content: center;
+  }
+  .account-info {
+    .btn-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  section.account-container {
+    padding-top: 2em;
+    flex-direction: column;
+    width: 90%;
+    hr {
+      margin: 1em;
+    }
+  }
+}

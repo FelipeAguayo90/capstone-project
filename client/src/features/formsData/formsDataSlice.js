@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   loginForm: {},
   registerForm: {},
+  updateForm: {},
 };
 
 const formsDataSlice = createSlice({
@@ -16,11 +17,16 @@ const formsDataSlice = createSlice({
     setRegisterDt: (state, action) => {
       const { name, value } = action.payload;
       state.registerForm = { ...state.registerForm, [name]: value };
-      console.log(state.registerForm);
+    },
+    updateAccntInfo: (state, action) => {
+      const { name, value } = action.payload;
+      state.updateForm = { ...state.updateForm, [name]: value };
+      console.log(state.updateForm);
     },
   },
 });
 
-export const { setLoginDt, setRegisterDt } = formsDataSlice.actions;
+export const { setLoginDt, setRegisterDt, updateAccntInfo } =
+  formsDataSlice.actions;
 
 export default formsDataSlice.reducer;

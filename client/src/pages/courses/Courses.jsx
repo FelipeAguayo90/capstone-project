@@ -7,12 +7,9 @@ import { CourseCard } from '../../components/courseCard';
 const Courses = () => {
   const dispatch = useDispatch();
   const { isLoading, courseItems } = useSelector((store) => store.courses);
-  const { user } = useSelector((store) => store.user.user);
   useEffect(() => {
     dispatch(getCourses());
   }, []);
-
-  console.log(user);
 
   const searchRef = useRef();
 

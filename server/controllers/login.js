@@ -28,7 +28,6 @@ const login = asyncWrapper(async (req, res) => {
         .json({ msg: 'The user name or password provided is incorrect.' });
     }
     const values2 = [username];
-    console.log(values2);
     const text2 =
       'UPDATE account SET last_login = CURRENT_TIMESTAMP WHERE username = $1';
 
@@ -39,15 +38,13 @@ const login = asyncWrapper(async (req, res) => {
     });
     const { email, first_name, is_admin, last_login, user_id } =
       results.rows[0];
+    console.log(results.rows[0]);
+    results.rows[0].user = true;
+    const user = results.rows[0];
     res.status(200).json({
       msg: 'Logged in successfully',
       token: `Bearer ${token}`,
-      first_name,
-      is_admin,
-      last_login,
-      user_id,
-      email,
-      user: true,
+      user,
     });
   });
 });

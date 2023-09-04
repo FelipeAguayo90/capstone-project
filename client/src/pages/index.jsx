@@ -13,6 +13,7 @@ import { StudentLayout } from './studentLayout';
 import { Student } from './student';
 import { Account } from './account';
 import { SingleCourse } from './singleCourse';
+import { UpdateUser } from './updateUser';
 
 export {
   Admin,
@@ -30,4 +31,5 @@ export {
   Student,
   Account,
   SingleCourse,
+  UpdateUser,
 };

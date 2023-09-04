@@ -1,83 +1,130 @@
-.dash-container {
-  @include flexCenter(center, column, center);
-  margin-top: 0.5em;
-  //   margin: 2em;
-
-  section {
-    width: 100%;
-  }
-  h3 {
-    margin: 0 1em;
-  }
-
-  input {
-    text-indent: 5px;
-    height: 2em;
-    border: $border-radius;
-    border: solid 1px $border-color;
-  }
-
-  button {
-    margin-left: 1em;
-  }
-
-  th:last-of-type {
-    text-align: center;
-  }
-
-  .empty {
-    @include flexCenter(center, row, center);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  }
-}
-
-.student-course-bar {
-  padding: 1em;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: $secondary-color;
+.dash-page {
+  padding: 2em;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  border-radius: $border-radius;
-}
+  border: solid 1px $neutral-blue;
 
-.empty,
-.courses-sec,
-.student-sec {
-  margin: 1em 0;
-  width: 100%;
-  overflow-x: auto;
+  overflow-y: scroll;
+
+  .search {
+    display: flex;
+    justify-content: end;
+    input {
+      margin: 1em;
+      text-align: center;
+    }
+  }
+
+  .accounts {
+    .pagination {
+      margin: 1em;
+      display: flex;
+      justify-content: center;
+    }
+
+    .no-users {
+      position: relative;
+      top: 5em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      opacity: 0.6;
+    }
+
+    svg {
+      margin: 0 0.5em;
+      cursor: pointer;
+    }
+
+    a {
+      color: black;
+      margin: 0 1em;
+    }
+  }
+
+  .active-link {
+    text-decoration: underline;
+    font-size: 1.3em;
+    color: $active-text;
+    transform: translateY(-0.3em);
+    transition: translateY 0.3s;
+  }
+
+  .account-details {
+    display: flex;
+    flex-direction: column;
+    margin: 1em 0;
+    .personal-info {
+      .portrait {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        img {
+          border-radius: 50%;
+        }
+        p {
+          padding: 1em;
+        }
+      }
+
+      hr {
+        margin: 1em 0;
+        width: 50%;
+      }
+      svg {
+        height: 3em;
+        width: 3em;
+      }
+      width: 30%;
+    }
+    p {
+      margin: 0.5em 0;
+    }
+    .enrolled-courses {
+      padding: 1em;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .opaque {
+        opacity: 0.6;
+      }
+
+      svg {
+        cursor: pointer;
+      }
+    }
+  }
 }
 
 @media (min-width: 768px) {
-  .dash-container {
-    margin: 2em;
-
-    section {
-      width: 100%;
-    }
-    h3 {
-      margin: 0 1em;
-    }
-
-    input {
-      text-indent: 5px;
-      height: 2em;
-    }
-
-    button {
-      margin-left: 1em;
+  .dash-page {
+    .account-details {
+      flex-direction: row;
     }
   }
-  .student-course-bar {
-    padding: 1em;
-  }
+  .dash-container .student-account {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .enrolled-courses {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      padding: 1.5em;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      background-color: $white-color;
+      border-radius: $border-radius;
+      h1,
+      p {
+        margin: 1.5em;
+      }
 
-  .student-sec {
-    margin: 1em 0;
-    width: 100%;
+      svg {
+        cursor: pointer;
+      }
+    }
   }
-}
-
-@media (min-width: 1024px) {
 }
