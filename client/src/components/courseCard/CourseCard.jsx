@@ -4,11 +4,18 @@ import img1 from '../../assets/images/advanced-algorithms.png';
 
 const CourseCard = ({ course }) => {
   const { user } = useSelector((store) => store.user);
-  // console.log(img1);
+  console.log(img1);
   return (
     <article className="card">
       <div className="img-card">
-        <img src={img1} alt={course.course_title} />
+        <img
+          src={
+            course.img_address === img1
+              ? img1
+              : '../../../dist/assets/images/advanced-algorithms.png'
+          }
+          alt={course.course_title}
+        />
       </div>
       <div className="course-name">
         <Link
