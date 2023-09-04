@@ -1,3 +1,3 @@
-import Courses from './courses';
+import Courses from './Courses';
 
 export { Courses };
