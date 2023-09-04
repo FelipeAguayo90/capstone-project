@@ -1,3 +1,3 @@
-import LogoutModal from './logoutModal';
+import LogoutModal from './LogoutModal';
 
 export { LogoutModal };

@@ -1,3 +1,3 @@
-import DltStdModal from './dltStdModal';
+import DltStdModal from './DltStdModal';
 
 export { DltStdModal };

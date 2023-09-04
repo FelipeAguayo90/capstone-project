@@ -1,3 +1,3 @@
-import Student from './student';
+import Student from './Student';
 
 export { Student };
