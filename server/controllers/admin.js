@@ -16,9 +16,9 @@ const dltUser = asyncWrapper(async (req, res) => {
     if (error) {
       res.json({ msg: error });
     }
-    res.json({ msg: results.rows[0] });
+    res.json({ userId });
   });
-  console.log(userId);
+  console.log(`deleted user ${userId}`);
 });
 
 module.exports = { getStudents, dltUser };
