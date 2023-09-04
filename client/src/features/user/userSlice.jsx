@@ -16,7 +16,7 @@ const initialState = {
   isLoading: true,
   invalCredentials: false,
 };
-// http://localhost:5173
+
 const url2 = '/api/v1/user/verify-token';
 export const isUser = createAsyncThunk('user/isUser', async () => {
   const storedToken = localStorage.getItem('Authorization');
@@ -98,9 +98,11 @@ export const updateUser = createAsyncThunk(
     console.log(user_id);
 
     const userInfo = thunkAPI.getState().formsData.updateForm;
+    console.log(isObjectEmpty(userInfo));
 
-    if (isObjectEmpty(userInfo)) return;
-    console.log(userInfo);
+    if (isObjectEmpty(userInfo)) {
+      return;
+    }
     return fetch(urlUpdate, {
       method: 'POST',
       headers: {
@@ -128,7 +130,7 @@ export const updateAccount = createAsyncThunk(
     const userInfo = thunkAPI.getState().formsData.updateForm;
 
     if (isObjectEmpty(userInfo)) return;
-    console.log(userInfo);
+    console.log(isObjectEmpty(userInfo));
     return fetch(urlUpdate, {
       method: 'POST',
       headers: {
@@ -227,7 +229,9 @@ const userSlice = createSlice({
       .addCase(updateUser.fulfilled, (state, action) => {
         console.log(action.payload);
         const { user } = action.payload;
-        state.user = user;
+        if (user) {
+          state.user = user;
+        }
       })
       .addCase(updateUser.rejected, (state, action) => {
         console.log('something went wrong');

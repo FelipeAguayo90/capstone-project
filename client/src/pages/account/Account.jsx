@@ -53,7 +53,7 @@ const Account = () => {
       >
         <h2>account info</h2>
         <hr></hr>
-        <FileUpload />
+
         <div className="form-group">
           <div className="form-control">
             <label htmlFor="username">Username:</label>
@@ -213,6 +213,7 @@ const Account = () => {
           </button>
         </div>
       </form>
+      <FileUpload />
     </section>
   );
 };
