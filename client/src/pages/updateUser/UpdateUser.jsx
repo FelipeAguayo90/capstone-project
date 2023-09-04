@@ -2,7 +2,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { updateAccntInfo } from '../../features/formsData/formsDataSlice';
-import { updateUser } from '../../features/user/userSlice';
+import { updateAccount } from '../../features/user/userSlice';
 import { getStudents, displayItems } from '../../features/admin/adminSlice';
 
 const UpdateUser = () => {
@@ -33,7 +33,7 @@ const UpdateUser = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = await dispatch(updateUser(account.user_id)).then(() => {
+    const data = await dispatch(updateAccount(account.user_id)).then(() => {
       dispatch(getStudents()).then(() => {
         dispatch(displayItems());
         navigate('/admin/dashboard');

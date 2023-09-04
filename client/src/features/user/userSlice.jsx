@@ -117,6 +117,34 @@ export const updateUser = createAsyncThunk(
   }
 );
 
+export const updateAccount = createAsyncThunk(
+  'account/update',
+  (payload, thunkAPI) => {
+    const storedToken = localStorage.getItem('Authorization');
+    const user_id = payload;
+    // const { user_id } = thunkAPI.getState().user.user;
+    console.log(user_id);
+
+    const userInfo = thunkAPI.getState().formsData.updateForm;
+
+    if (isObjectEmpty(userInfo)) return;
+    console.log(userInfo);
+    return fetch(urlUpdate, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `${storedToken}`,
+      },
+      body: JSON.stringify({
+        userInfo,
+        user_id,
+      }),
+    })
+      .then((resp) => resp.json())
+      .catch((err) => console.log(err));
+  }
+);
+
 const userSlice = createSlice({
   name: 'user',
   initialState,
@@ -195,14 +223,23 @@ const userSlice = createSlice({
       .addCase(getProfilePhoto.rejected, (state, action) => {
         state.isLoading = false;
       })
-      .addCase(updateUser.pending, (state, action) => {
-        console.log('almost');
-      })
+      .addCase(updateUser.pending, (state, action) => {})
       .addCase(updateUser.fulfilled, (state, action) => {
         console.log(action.payload);
+        const { user } = action.payload;
+        state.user = user;
       })
       .addCase(updateUser.rejected, (state, action) => {
         console.log('something went wrong');
+      })
+      .addCase(updateAccount.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(updateAccount.fulfilled, (state, action) => {
+        state.isLoading = false;
+      })
+      .addCase(updateAccount.rejected, (state, action) => {
+        state.isLoading = false;
       });
   },
 });
