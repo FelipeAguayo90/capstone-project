@@ -185,6 +185,10 @@ const adminSlice = createSlice({
       })
       .addCase(dltStudent.fulfilled, (state, action) => {
         state.stndsLoading = false;
+        const { userId } = action.payload;
+        state.stdList = state.stdList.filter(
+          (student) => student.user_id !== userId
+        );
       })
       .addCase(dltStudent.rejected, (state) => {
         state.stndsLoading = true;
