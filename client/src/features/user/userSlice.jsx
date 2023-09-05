@@ -12,6 +12,7 @@ const initialState = {
     user: false,
     token: null,
   },
+  userUpdateInfo: {},
   profilePic: null,
   isLoading: true,
   invalCredentials: false,
@@ -155,6 +156,11 @@ const userSlice = createSlice({
       state.user = action.payload.user;
       localStorage.setItem('Authorization', action.payload.token);
     },
+    updateUserInfo: (state, action) => {
+      const { name, value } = action.payload;
+
+      state.userUpdateInfo = { ...state.userUpdateInfo, [name]: value };
+    },
     logout: (state) => {
       state.user = {
         email: null,
@@ -186,6 +192,7 @@ const userSlice = createSlice({
 
         localStorage.setItem('Authorization', token);
         state.user = action.payload.user;
+        state.userUpdateInfo = action.payload.user;
       })
       .addCase(getUser.rejected, (state) => {
         state.isLoading = false;
@@ -203,6 +210,7 @@ const userSlice = createSlice({
           return;
         }
         state.user = action.payload;
+        state.userUpdateInfo = action.payload;
       })
       .addCase(isUser.rejected, (state) => {
         state.isLoading = false;
@@ -247,6 +255,6 @@ const userSlice = createSlice({
   },
 });
 
-export const { setUser, logout } = userSlice.actions;
+export const { setUser, logout, updateUserInfo } = userSlice.actions;
 
 export default userSlice.reducer;

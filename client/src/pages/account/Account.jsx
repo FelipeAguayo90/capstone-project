@@ -3,13 +3,15 @@ import { ImSpinner6 } from 'react-icons/im';
 import { useState } from 'react';
 import { updateAccntInfo } from '../../features/formsData/formsDataSlice';
 import { FileUpload } from '../../components/uploadfile';
-import { updateUser } from '../../features/user/userSlice';
+import { updateUser, updateUserInfo } from '../../features/user/userSlice';
 
 const Account = () => {
   const dispatch = useDispatch();
-  const { user, isLoading } = useSelector((store) => store.user);
+  const { user, isLoading, userUpdateInfo } = useSelector(
+    (store) => store.user
+  );
   const [data, setData] = useState(user);
-  console.log(user);
+
   const [isFocused, setIsFocused] = useState(false);
   const {
     isShort,
@@ -36,10 +38,11 @@ const Account = () => {
 
   const handleChange = async (event) => {
     const { name, value } = event.target;
-    setData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+    // setData((prevData) => ({
+    //   ...prevData,
+    //   [name]: value,
+    // }));
+    dispatch(updateUserInfo({ name, value }));
     dispatch(updateAccntInfo({ name, value }));
   };
 
@@ -72,7 +75,7 @@ const Account = () => {
               type="text"
               id="username"
               name="username"
-              value={data.username}
+              value={userUpdateInfo.username}
               onChange={handleChange}
             />
             {invalUsername && (
@@ -87,7 +90,7 @@ const Account = () => {
               type="text"
               id="first_name"
               name="first_name"
-              value={data.first_name}
+              value={userUpdateInfo.first_name}
               onChange={handleChange}
             />
           </div>
@@ -97,7 +100,7 @@ const Account = () => {
               type="text"
               id="lastName"
               name="last_name"
-              value={data.last_name}
+              value={userUpdateInfo.last_name}
               onChange={handleChange}
             />
           </div>
@@ -107,7 +110,7 @@ const Account = () => {
               type="email"
               id="email"
               name="email"
-              value={data.email}
+              value={userUpdateInfo.email}
               onChange={handleChange}
             />
             {invalEmail && (
@@ -163,7 +166,7 @@ const Account = () => {
               type="tel"
               id="telephone"
               name="telephone"
-              value={data.telephone}
+              value={userUpdateInfo.telephone}
               onChange={handleChange}
             />
           </div>
@@ -173,7 +176,7 @@ const Account = () => {
               type="text"
               id="street"
               name="street_address"
-              value={data.street_address}
+              value={userUpdateInfo.street_address}
               onChange={handleChange}
             />
           </div>
@@ -183,7 +186,7 @@ const Account = () => {
               type="text"
               id="city"
               name="city"
-              value={data.city}
+              value={userUpdateInfo.city}
               onChange={handleChange}
             />
           </div>
@@ -193,7 +196,7 @@ const Account = () => {
               type="number"
               id="zip_code"
               name="zip_code"
-              value={data.zip_code}
+              value={userUpdateInfo.zip_code}
               onChange={handleChange}
             />
           </div>
@@ -203,7 +206,7 @@ const Account = () => {
               type="text"
               id="state"
               name="state"
-              value={data.state}
+              value={userUpdateInfo.state}
               onChange={handleChange}
             />
           </div>
@@ -213,7 +216,7 @@ const Account = () => {
               type="text"
               id="country"
               name="country"
-              value={data.country}
+              value={userUpdateInfo.country}
               onChange={handleChange}
             />
           </div>
