@@ -96,7 +96,7 @@ export const updateUser = createAsyncThunk(
     const user_id = payload;
 
     const userInfo = thunkAPI.getState().formsData.updateForm;
-    console.log('hello');
+
     if (isObjectEmpty(userInfo)) {
       return;
     }

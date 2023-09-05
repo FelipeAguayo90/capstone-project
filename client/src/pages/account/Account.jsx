@@ -9,7 +9,7 @@ const Account = () => {
   const dispatch = useDispatch();
   const { user, isLoading } = useSelector((store) => store.user);
   const [data, setData] = useState(user);
-
+  console.log(user);
   const [isFocused, setIsFocused] = useState(false);
   const {
     isShort,
@@ -57,6 +57,7 @@ const Account = () => {
         className="account-info"
         onSubmit={(e) => {
           handleSubmit(e).then(() => {
+            console.log(user);
             setData(user);
           });
         }}
