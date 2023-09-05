@@ -21,7 +21,6 @@ const formsDataSlice = createSlice({
     updateAccntInfo: (state, action) => {
       const { name, value } = action.payload;
       state.updateForm = { ...state.updateForm, [name]: value };
-      console.log(state.updateForm);
     },
   },
 });

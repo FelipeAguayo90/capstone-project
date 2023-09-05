@@ -94,11 +94,8 @@ export const updateUser = createAsyncThunk(
   (payload, thunkAPI) => {
     const storedToken = localStorage.getItem('Authorization');
     const user_id = payload;
-    // const { user_id } = thunkAPI.getState().user.user;
-    console.log(user_id);
 
     const userInfo = thunkAPI.getState().formsData.updateForm;
-    console.log(isObjectEmpty(userInfo));
 
     if (isObjectEmpty(userInfo)) {
       return;
@@ -227,7 +224,6 @@ const userSlice = createSlice({
       })
       .addCase(updateUser.pending, (state, action) => {})
       .addCase(updateUser.fulfilled, (state, action) => {
-        console.log(action.payload);
         const { user } = action.payload;
         if (user) {
           state.user = user;
