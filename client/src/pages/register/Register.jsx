@@ -64,7 +64,7 @@ const Register = () => {
     try {
       const data = await dispatch(registerUser());
       const { is_admin } = data.payload.user;
-      console.log(data.payload);
+
       dispatch(setUser(data.payload));
       if (data.payload.msg.name !== 'error') {
         if (is_admin) {
@@ -78,7 +78,6 @@ const Register = () => {
   };
 
   const handleChange = async (event) => {
-    console.log(event.target.value);
     const { name, value } = event.target;
     dispatch(setRegisterDt({ name, value }));
   };

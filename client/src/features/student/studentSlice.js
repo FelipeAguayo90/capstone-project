@@ -30,7 +30,6 @@ export const getStdClasses = createAsyncThunk(
 const deleteClass = '/api/v1/user/delete/class';
 export const dropClass = createAsyncThunk('user/dropClass', async (payload) => {
   const { user_id, course_id } = payload;
-  console.log(payload);
 
   try {
     const storedToken = localStorage.getItem('Authorization');
@@ -75,7 +74,7 @@ const studentSlice = createSlice({
         state.classesLoading = true;
 
         const { course_id } = action.payload;
-        console.log(course_id);
+
         state.studentClasses = state.studentClasses.filter(
           (course) => course.course_id !== course_id
         );
