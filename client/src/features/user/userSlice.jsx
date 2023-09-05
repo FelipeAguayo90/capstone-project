@@ -235,10 +235,6 @@ const userSlice = createSlice({
       })
       .addCase(updateUser.fulfilled, (state, action) => {
         state.isLoading = false;
-        if (action.payload) {
-          const { user } = action.payload;
-          state.user = user;
-        }
       })
       .addCase(updateUser.rejected, (state, action) => {
         state.isLoading = false;

@@ -4,9 +4,11 @@ import { useState } from 'react';
 import { updateAccntInfo } from '../../features/formsData/formsDataSlice';
 import { FileUpload } from '../../components/uploadfile';
 import { updateUser, updateUserInfo } from '../../features/user/userSlice';
+import { useNavigate } from 'react-router-dom';
 
 const Account = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { user, isLoading, userUpdateInfo } = useSelector(
     (store) => store.user
   );
@@ -56,6 +58,10 @@ const Account = () => {
         className="account-info"
         onSubmit={(e) => {
           handleSubmit(e);
+          if (user.isAdmin) {
+            return navigate('/admin/dashboard');
+          }
+          navigate('/student/dashboard');
         }}
       >
         <h2>account info</h2>
