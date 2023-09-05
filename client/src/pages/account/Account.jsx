@@ -31,9 +31,7 @@ const Account = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(updateUser(user.user_id)).then(() => {
-      setData(user);
-    });
+    dispatch(updateUser(user.user_id));
   };
 
   const handleChange = async (event) => {
@@ -58,7 +56,9 @@ const Account = () => {
       <form
         className="account-info"
         onSubmit={(e) => {
-          handleSubmit(e);
+          handleSubmit(e).then(() => {
+            setData(user);
+          });
         }}
       >
         <h2>account info</h2>
