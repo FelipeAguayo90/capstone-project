@@ -10,7 +10,6 @@ const Account = () => {
   const { user, isLoading, userUpdateInfo } = useSelector(
     (store) => store.user
   );
-  const [data, setData] = useState(user);
 
   const [isFocused, setIsFocused] = useState(false);
   const {
@@ -38,10 +37,7 @@ const Account = () => {
 
   const handleChange = async (event) => {
     const { name, value } = event.target;
-    // setData((prevData) => ({
-    //   ...prevData,
-    //   [name]: value,
-    // }));
+
     dispatch(updateUserInfo({ name, value }));
     dispatch(updateAccntInfo({ name, value }));
   };
@@ -59,10 +55,7 @@ const Account = () => {
       <form
         className="account-info"
         onSubmit={(e) => {
-          handleSubmit(e).then(() => {
-            console.log(user);
-            setData(user);
-          });
+          handleSubmit(e);
         }}
       >
         <h2>account info</h2>
