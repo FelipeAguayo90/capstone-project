@@ -96,7 +96,7 @@ export const updateUser = createAsyncThunk(
     const user_id = payload;
 
     const userInfo = thunkAPI.getState().formsData.updateForm;
-
+    console.log('hello');
     if (isObjectEmpty(userInfo)) {
       return;
     }
@@ -222,15 +222,18 @@ const userSlice = createSlice({
       .addCase(getProfilePhoto.rejected, (state, action) => {
         state.isLoading = false;
       })
-      .addCase(updateUser.pending, (state, action) => {})
+      .addCase(updateUser.pending, (state, action) => {
+        state.isLoading = true;
+      })
       .addCase(updateUser.fulfilled, (state, action) => {
-        const { user } = action.payload;
-        if (user) {
+        state.isLoading = false;
+        if (action.payload) {
+          const { user } = action.payload;
           state.user = user;
         }
       })
       .addCase(updateUser.rejected, (state, action) => {
-        console.log('something went wrong');
+        state.isLoading = false;
       })
       .addCase(updateAccount.pending, (state, action) => {
         state.isLoading = true;

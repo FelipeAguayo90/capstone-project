@@ -1,13 +1,13 @@
 import { useSelector, useDispatch } from 'react-redux';
-
-import { useState, useRef } from 'react';
+import { ImSpinner6 } from 'react-icons/im';
+import { useState } from 'react';
 import { updateAccntInfo } from '../../features/formsData/formsDataSlice';
 import { FileUpload } from '../../components/uploadfile';
 import { updateUser } from '../../features/user/userSlice';
 
 const Account = () => {
   const dispatch = useDispatch();
-  const { user } = useSelector((store) => store.user);
+  const { user, isLoading } = useSelector((store) => store.user);
   const [data, setData] = useState(user);
 
   const [isFocused, setIsFocused] = useState(false);
@@ -31,7 +31,9 @@ const Account = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = await dispatch(updateUser(user.user_id));
+    dispatch(updateUser(user.user_id)).then(() => {
+      setData(user);
+    });
   };
 
   const handleChange = async (event) => {
@@ -42,6 +44,14 @@ const Account = () => {
     }));
     dispatch(updateAccntInfo({ name, value }));
   };
+
+  if (isLoading) {
+    return (
+      <div className="spinner-container">
+        <ImSpinner6 className="spinner" />
+      </div>
+    );
+  }
 
   return (
     <section className="account-container">
